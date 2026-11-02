@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味｜はじめてのFX学習ノート（仮称）【見本】</title>
+<meta name="description" content="ロスカットとは、FXで含み損が一定水準に達したとき業者が強制的に決済する仕組みです。証拠金・レバレッジ・証拠金維持率の関係と「個人は最大25倍」の意味を計算例で解説。急変時に証拠金以上の損失が出るリスクや、ロスカットされにくくする考え方も紹介します。（125字）">
+<style>
+:root{
+  --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
+  --bg:#f6f8fb; --card:#fff; --warn-bg:#fff7e6; --warn-line:#e0a100; --note-bg:#eef5ff; --note-line:#5b8def;
+  --step1:#2f855a; --step2:#2b6cb0; --step3:#b7791f; --step4:#6b46c1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px}
+a{color:var(--navy-2)} a:hover{color:var(--navy)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.small{font-size:.86rem;color:var(--muted)}
+.mock-banner{background:#3b3b3b;color:#fff;text-align:center;font-size:.8rem;padding:6px 12px;letter-spacing:.02em}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700}
+.logo__mark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--navy);color:#fff;font-size:.85rem}
+.logo__text{font-size:1.1rem}.logo__text small{font-weight:400;color:var(--muted);font-size:.75rem;margin-left:4px}
+.badge-mock{border:1px dashed #c53030;color:#c53030;font-size:.75rem;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.gnav ul{display:flex;gap:4px;list-style:none;margin:0 auto;padding-bottom:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gnav a{display:block;padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.9rem;white-space:nowrap}
+.gnav a:hover{background:var(--bg)} .gnav a[aria-current]{background:var(--navy);color:#fff}
+.main{padding-top:24px;padding-bottom:48px}
+.eyebrow{color:var(--navy-2);font-weight:700;font-size:.85rem;margin:0 0 4px;letter-spacing:.05em}
+.hero{background:linear-gradient(135deg,#1f3a5f,#2c5282);color:#fff;border-radius:14px;padding:36px 28px;margin-bottom:20px}
+.hero .eyebrow{color:#bcd3f2}.hero h1{font-size:1.75rem;line-height:1.45;margin:.2em 0 .5em}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;background:#fff;color:var(--navy);padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn:hover{opacity:.9;color:var(--navy)} .btn--ghost:hover{color:#fff}
+.section{margin:32px 0}.section--muted{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 24px 12px}
+.section__title{font-size:1.3rem;border-left:5px solid var(--navy);padding-left:10px}
+.road{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end}
+.road__step a{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink);height:100%}
+.road__step--1{--c:var(--step1)} .road__step--2{--c:var(--step2);margin-bottom:0}.road__step--3{--c:var(--step3)}.road__step--4{--c:var(--step4)}
+.road__step--1 a{min-height:200px}.road__step--2 a{min-height:225px}.road__step--3 a{min-height:250px}.road__step--4 a{min-height:275px}
+.road__num{color:var(--c);font-weight:700;font-size:.85rem}.road__name{font-size:1.3rem;font-weight:700}
+.road__goal{font-size:.85rem;color:var(--muted);flex:1}.road__count{font-size:.8rem;color:var(--c);font-weight:700}
+.road__step a:hover{box-shadow:0 4px 14px rgba(31,58,95,.12)}
+.post-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.post-card{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.post-card__id{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--muted);min-width:3.2em}
+.post-card__title{flex:1;min-width:12em;font-weight:700}
+.post-card.is-pending{background:#fafbfc}.post-card.is-pending .post-card__title{color:var(--muted);font-weight:400}
+.tag{font-size:.72rem;border:1px solid var(--line);color:var(--muted);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag--draft{border-color:var(--step2);color:var(--step2)}.tag--missing{border-color:#c53030;color:#c53030}
+.crumbs ol{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin:0 8px}
+.steps{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:20px}
+.steps__now{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
+.steps ol{list-style:none;margin:0;padding:10px 6px 2px 0;display:flex;gap:6px;overflow-x:auto}
+.steps__item a{display:block;padding:6px 12px;border-radius:6px;background:var(--bg);text-decoration:none;color:var(--muted);font-size:.85rem;white-space:nowrap;position:relative}
+.steps__item.is-current a{background:var(--navy);color:#fff;font-weight:700}
+.steps__item.is-current a::after{content:"いまここ";position:absolute;top:-9px;right:-4px;background:#c53030;color:#fff;font-size:.6rem;padding:0 5px;border-radius:4px}
+.article{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 32px}
+.article__head h1{font-size:1.6rem;line-height:1.5;margin:.3em 0}
+.article__meta{display:flex;gap:8px;align-items:center;margin:0}.article__id{font-family:ui-monospace,monospace;color:var(--muted);font-size:.85rem}
+.progress{display:inline-block;background:var(--bg);border-radius:6px;padding:2px 10px;font-size:.85rem;margin:0}
+.toc{background:var(--bg);border-radius:10px;padding:12px 20px;margin:20px 0}
+.toc__title{font-weight:700;margin:0}.toc ol{margin:6px 0 0;padding-left:1.4em}
+.prose h2{font-size:1.35rem;border-bottom:2px solid var(--navy);padding-bottom:6px;margin-top:2.2em;scroll-margin-top:110px}
+.prose h3{font-size:1.12rem;border-left:4px solid var(--navy-2);padding-left:10px;margin-top:1.8em}
+.prose li{margin:.3em 0}
+.callout{margin:1.2em 0;padding:12px 18px;border-radius:10px;border-left:5px solid}
+.callout p{margin:.4em 0}.callout ul{margin:.3em 0;padding-left:1.3em}
+.callout--warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.callout--note{background:var(--note-bg);border-color:var(--note-line);font-size:.95rem}
+.table-wrap{overflow-x:auto;margin:1em 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.figure-ph{border:2px dashed #b8c4d3;border-radius:10px;padding:14px 18px;margin:1.2em 0;color:var(--muted);font-size:.88rem;background:#fbfcfe}
+.figure-ph__label{display:block;font-weight:700;color:var(--navy-2);margin-bottom:4px}
+.pending{color:var(--muted);border-bottom:1px dotted var(--muted)}.pending small{font-size:.75em}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.pager__link{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;font-size:.9rem}
+.pager__link small{display:block;color:var(--muted)}.pager__link.is-pending{color:var(--muted);background:#fafbfc}
+.pager__link:last-child{text-align:right}
+.cat-head{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:16px}
+.cat-head h1{margin:0 0 6px}.goal{margin:0 0 6px}
+.notice{background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 14px;font-size:.9rem}
+.back{margin-top:20px}
+.promise{padding-left:1.2em}
+.form{display:grid;gap:12px;max-width:520px}.form label{display:grid;gap:4px;font-size:.9rem}
+.form input,.form textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:#f3f4f6}
+.form button{justify-self:start;padding:8px 18px;border-radius:6px;border:0;background:#cbd5e0;color:#4a5568}
+.site-footer{background:#1a2b44;color:#cfd8e3;padding:32px 0 16px;font-size:.9rem}
+.site-footer a{color:#e2e8f0;text-decoration:none}.site-footer a:hover{text-decoration:underline}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.footer-grid ul{list-style:none;padding:0;margin:0}.footer-title{font-weight:700;color:#fff;margin:0 0 6px}
+.site-footer .small{color:#a0aec0}
+.footer-mock{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#ff9d9d}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .road{grid-template-columns:1fr 1fr}.road__step a{min-height:0 !important}
+  .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
+  .article{padding:20px 16px;border-radius:10px}.article__head h1{font-size:1.3rem}
+  .footer-grid{grid-template-columns:1fr}
+  .pager{grid-template-columns:1fr}.pager__link:last-child{text-align:left}
+  .badge-mock{display:none}
+}
+@media (max-width:420px){.road{grid-template-columns:1fr}}
+
+/* ===== モバイル対応（レスポンシブ）追加分 ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{max-width:100%;overflow-x:hidden}
+body{line-height:1.75;overflow-wrap:break-word;word-break:normal}
+img,svg,video,iframe,canvas{max-width:100%;height:auto}
+pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-break:break-word;background:#f3f6fa;border-radius:8px;padding:12px 14px;font-size:.88rem}
+code{overflow-wrap:anywhere;word-break:break-word}
+.prose a,.prose td,.prose p,.prose li,.callout,.figure-ph{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.main,.article,.prose{min-width:0}
+/* ハンバーガーボタン（PCでは非表示） */
+.nav-toggle{display:none;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.nav-toggle:focus-visible,.gnav a:focus-visible,.btn:focus-visible{outline:3px solid var(--note-line);outline-offset:2px}
+.nav-toggle__bar,.nav-toggle__bar::before,.nav-toggle__bar::after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.nav-toggle__bar::before,.nav-toggle__bar::after{content:"";position:absolute;left:0}
+.nav-toggle__bar::before{top:-6px}.nav-toggle__bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.75}
+  .wrap{padding:0 14px}
+  .main{padding-top:14px;padding-bottom:32px}
+  .mock-banner{font-size:.72rem;padding:4px 10px}
+  .site-header__inner{padding-top:8px;padding-bottom:8px}
+  .logo{min-width:0}.logo__text{font-size:1rem;line-height:1.35}.logo__text small{display:none}
+  .logo__mark{width:32px;height:32px;flex-shrink:0}
+  /* JSが動くときだけ折りたたむ（JS無効でもメニューは見える） */
+  .js .nav-toggle{display:inline-flex}
+  .js .gnav{display:none;border-top:1px solid var(--line);background:#fff;box-shadow:0 8px 16px rgba(31,58,95,.10)}
+  .js .gnav.is-open{display:block;max-height:calc(100vh - 90px);overflow-y:auto}
+  .js .gnav ul{flex-direction:column;gap:2px;padding:8px 14px 12px;overflow:visible}
+  .js .gnav a{display:flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:8px;font-size:1rem}
+  .gnav a{min-height:44px;display:flex;align-items:center}
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px}
+  .hero__cta .btn{flex:1 1 100%}
+  .hero{padding:22px 16px;border-radius:12px}.hero h1{font-size:1.35rem}.hero br{display:none}
+  .section{margin:24px 0}.section--muted{padding:4px 16px 10px}
+  .section__title{font-size:1.15rem}
+  .article{padding:18px 14px;border-radius:10px}.article__head h1{font-size:1.3rem;line-height:1.5}
+  .article__meta{flex-wrap:wrap}
+  .prose h2{font-size:1.2rem;scroll-margin-top:80px}.prose h3{font-size:1.05rem}
+  .prose ul,.prose ol,.toc ol{padding-left:1.3em}
+  .toc{padding:10px 14px}.toc a{display:inline-block;padding:4px 0}
+  .callout{padding:10px 12px}
+  .figure-ph{padding:12px}
+  table{font-size:.85rem}th,td{padding:6px 8px}
+  .cat-head{padding:16px}
+  .cat-head h1{font-size:1.4rem}
+  .post-card{padding:12px}.post-card__title{min-width:0;flex-basis:100%}
+  .steps ol{padding-top:12px}
+  .steps__item a{min-height:40px;display:flex;align-items:center}
+  .crumbs ol{font-size:.8rem}
+  .pager__link{min-height:44px}
+  .site-footer a{display:inline-block;padding:6px 0}
+  .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
+  .form button{min-height:44px}
+}
+</style>
+</head>
+<body>
+<div class="mock-banner" role="note">見本（モック）・非公開 ― 公開前の完成イメージです。広告・アフィリエイトリンクは入っていません。</div>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small>（仮称）</small></span></a>
+    <span class="badge-mock">見本（モック）・非公開</span>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
+  </div>
+  <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
+</header>
+<main class="wrap main">
+<nav class="crumbs" aria-label="パンくずリスト"><ol><li><a href="index.html">トップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li aria-current="page">ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</li></ol></nav>
+<nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item is-current"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
+<article class="article">
+  <header class="article__head">
+    <p class="article__meta"><span class="tag tag--draft">下書き・見本掲載</span><span class="article__id">A-03</span></p>
+    <h1>ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</h1>
+    <p class="progress">STEP1 入門：全7本中 3本目</p>
+    <p class="article__lead small">最終確認：2026年10月25日（編集長レビュー済み原稿）｜本ページは見本です。リンク先が「準備中」の記事はまだありません。</p>
+  </header>
+  <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">結論：ロスカットとは？</a></li><li><a href="#sec-2">前提：証拠金とレバレッジ</a></li><li><a href="#sec-5">証拠金維持率とロスカットの関係</a></li><li><a href="#sec-7">ロスカットは万能ではない</a></li><li><a href="#sec-8">ロスカットされにくくするための考え方</a></li><li><a href="#sec-9">まとめ：次に読む記事</a></li></ol></aside>
+  <div class="prose">
+<p>「ロスカットとは何？」「FXのレバレッジ25倍ってどういう意味？」という疑問に、結論から答えます。<strong>ロスカットとは、FXで損失（含み損）が一定の水準まで膨らんだときに、業者が強制的に取引を決済して終わらせる仕組み</strong>です。損失の拡大を抑えるためのもので、<strong>損失をなくしてくれるものではありません</strong>。</p>
+<p>この記事では、ロスカットを理解するのに欠かせない「証拠金」「レバレッジ」「証拠金維持率」の関係を、計算例を使ってやさしく解説します。</p>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスクについて</strong><br />
+ロスカットは「損失を止める仕組み」であって、「損失をなくす仕組み」ではありません。相場が急に大きく動いたときは、ロスカットがあっても預けた証拠金を上回る損失が出ることがあります。</p>
+</blockquote>
+<h2 id="sec-1">結論：ロスカットとは？</h2>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>ロスカットがあるから安心、ではありません</strong><br />
+ロスカットされた時点で、それまでの損失は確定します。また、急変時には想定より不利な値段で決済されることもあります。</p>
+</blockquote>
+<p>ロスカットとは、FXで相場が予想と逆に動き、まだ決済していない損失（含み損）が業者の決めた水準に達したときに、<strong>業者が自動的に取引（建玉〈たてぎょく〉＝保有しているポジション）を決済する仕組み</strong>です。</p>
+<p>金融庁は、ロスカットルールを「投資者の損失の拡大を防止するため」のものと説明しています。日本では2010年2月から、個人とFX取引を行うすべての業者に、ロスカットルールの整備と遵守が義務付けられています。</p>
+<p>ポイントは次の3つです。</p>
+<ul>
+<li>ロスカットは、<strong>損失がそれ以上大きくなるのを抑えるため</strong>の仕組み</li>
+<li>ロスカットされると、<strong>その時点の損失が確定</strong>する（損失がなくなるわけではない）</li>
+<li>ロスカットになる水準は<strong>業者によって異なる</strong></li>
+</ul>
+<p>FXの損失リスク全体については「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」で解説しています。</p>
+<h2 id="sec-2">前提：証拠金とレバレッジ</h2>
+<p>ロスカットを理解するには、まず「証拠金」と「レバレッジ」を知っておく必要があります。</p>
+<ul>
+<li><strong>証拠金</strong>：FXの取引をするために、業者に預ける担保のお金です</li>
+<li><strong>レバレッジ</strong>：預けた証拠金の何倍の金額を取引しているかを表す倍率です</li>
+</ul>
+<p>レバレッジは、次の式で計算できます。</p>
+<blockquote>
+<p><strong>レバレッジ ＝ 取引額 ÷ 証拠金</strong></p>
+</blockquote>
+<p>たとえば、10万円の証拠金で100万円分の取引をしていれば、レバレッジは10倍です（数字は説明用の例です）。「てこ（lever）」の原理のように、小さな力（少ない資金）で大きなもの（大きな取引）を動かせることから、レバレッジと呼ばれています。</p>
+<p>ただし、レバレッジが高いほど、同じ値動きでも損益が大きくなります。FXの学び方の全体像は「<a href="roadmap.html">FXの勉強は何から始める？</a>」をご覧ください。</p>
+<h3 id="sec-3">日本の個人は最大25倍</h3>
+<p>日本で個人がFX取引を行う場合、<strong>通貨ペアの種類を問わず、取引額の4％以上の証拠金を預け、維持する必要があります</strong>。これをレバレッジに直すと、<strong>最大25倍</strong>（100％÷4％＝25）になります。</p>
+<p>この規制のポイントは次のとおりです。</p>
+<ul>
+<li>2010年8月1日から1年間は上限50倍（取引額の2％以上）、<strong>2011年8月1日以降は上限25倍</strong>（取引額の4％以上）</li>
+<li>業者は、新しく取引するときと、営業日ごとに1日1回以上決めた時刻に、取引額の4％以上の証拠金があるかを確認する</li>
+<li><strong>法人</strong>の店頭FX取引は、個人とは別のルールで、2017年2月から通貨ペアごとに過去の相場をもとに計算される率以上の証拠金が必要</li>
+</ul>
+<p>なお、海外の無登録業者の中には、日本の規制をはるかに上回る高レバレッジを宣伝しているところがあります。金融庁はこうした無登録業者による勧誘に注意を呼びかけています（くわしくは<a href="article-a02.html">A-02</a>・<span class="pending" title="A-07は準備中の記事です">A-07<small>（準備中）</small></span>）。</p>
+<h3 id="sec-4">計算例</h3>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場や業者の取引条件ではありません）  </p>
+<p>1ドル＝150円のときに、1万ドルを買う場合</p>
+<ul>
+<li>取引額：150円×1万ドル＝<strong>150万円</strong></li>
+<li>必要証拠金（4％）：150万円×4％＝<strong>6万円</strong></li>
+<li>このとき、6万円の証拠金で150万円分の取引ができる＝レバレッジ25倍</li>
+<li>為替レートが<strong>1円動くと、損益は1円×1万ドル＝1万円</strong></li>
+</ul>
+</blockquote>
+<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>証拠金と取引額のブロック図。下に小さな「証拠金6万円」のブロックを置き、その上に25個分の大きさの「取引額150万円」のブロックを積み上げて、「25倍」と表示する。「数値は説明用の例示」と明記</div>
+
+<p>「6万円で150万円分の取引ができる」と聞くと魅力的に感じるかもしれません。しかし、1円の値動きで1万円の損益が出るということは、<strong>6万円の証拠金に対して、6円逆に動けば証拠金と同じ6万円の損失になる</strong>ということです。実際には、口座に必要証拠金ちょうどの6万円しか入れていなければ、わずかな逆行でも証拠金維持率が下がり、6円動くよりずっと前にロスカットの対象になります。</p>
+<p>値動きの単位（pips）や取引数量ごとの損益計算は、「<span class="pending" title="A-05は準備中の記事です">FXの1pipsとは？<small>（準備中）</small></span>」「<span class="pending" title="B-04は準備中の記事です">FXのロットとは？<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<h2 id="sec-5">証拠金維持率とロスカットの関係</h2>
+<p>ロスカットがいつ起きるかを判断するときに使われるのが、「<strong>証拠金維持率</strong>」です。必要な証拠金に対して、口座にどれくらい余裕があるかを示す割合です。</p>
+<blockquote>
+<p><strong>証拠金維持率（％）＝ 有効証拠金 ÷ 必要証拠金 × 100</strong></p>
+</blockquote>
+<ul>
+<li><strong>有効証拠金</strong>：口座に入れたお金に、まだ決済していない損益（含み益・含み損）を足し引きした金額</li>
+<li><strong>必要証拠金</strong>：その取引をするために最低限必要な証拠金</li>
+</ul>
+<p>含み損が増えると有効証拠金が減るため、証拠金維持率は下がっていきます。そして、<strong>業者の決めた水準を下回ると、ロスカットが行われます</strong>。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場や業者の取引条件ではありません。わかりやすくするため、必要証拠金は6万円で固定して計算しています）  </p>
+<p>口座に30万円を入れ、1ドル＝150円で1万ドルを買った場合（必要証拠金6万円）</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>為替レート</th>
+<th>含み損益</th>
+<th>有効証拠金</th>
+<th>証拠金維持率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150円（買った直後）</td>
+<td>0円</td>
+<td>30万円</td>
+<td>30万÷6万×100＝<strong>500％</strong></td>
+</tr>
+<tr>
+<td>148円（2円の円高）</td>
+<td>－2万円</td>
+<td>28万円</td>
+<td>28万÷6万×100＝<strong>約467％</strong></td>
+</tr>
+<tr>
+<td>140円（10円の円高）</td>
+<td>－10万円</td>
+<td>20万円</td>
+<td>20万÷6万×100＝<strong>約333％</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>※実際の必要証拠金の計算方法（その時点のレートで計算し直すかどうか等）は業者によって異なります。</p>
+</blockquote>
+<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>証拠金維持率のメーター図。左から右へ維持率が下がっていくメーターを描き、含み損が増えるにつれて針が「業者のロスカット水準」のラインに近づく様子を示す。ロスカット水準のラインには具体的な％は書かず、「業者ごとに異なる」と注記する</div>
+
+<p>自分の資金と取引数量から、ロスカットまでの値幅を計算する方法は「<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？<small>（準備中）</small></span>」で解説しています。</p>
+<h3 id="sec-6">ロスカット水準は業者ごとに違う</h3>
+<p>「証拠金維持率が何％になったらロスカットされるか」は、<strong>業者によって異なります</strong>。同じ業者でも、口座の種類やコースによって違う場合があります。</p>
+<p>取引を始める前に、次の書面やページで必ず確認しましょう。</p>
+<ul>
+<li>各社の<strong>契約締結前交付書面</strong>（取引説明書）</li>
+<li>各社のウェブサイトの取引ルール・ロスカットの説明ページ</li>
+</ul>
+<p>あわせて、ロスカットとは別に「証拠金維持率が一定を下回ったときに追加の入金を求める仕組み（いわゆる追証〈おいしょう〉）」やアラート（通知）の有無・条件も、業者ごとに異なるので確認しておきましょう。業者を選ぶときに確認したいポイントは「<span class="pending" title="A-07は準備中の記事です">FX初心者がまずやること<small>（準備中）</small></span>」でまとめています。</p>
+<h2 id="sec-7">ロスカットは万能ではない</h2>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスク注意</strong><br />
+金融庁は「相場が急激に変動したときは、ロスカットルールが適用されても、証拠金の額を上回る損失が生じることがある」と説明しています。</p>
+</blockquote>
+<p>ロスカットは、業者の決めた水準に達したときに決済の注文が出される仕組みですが、<strong>その水準ぴったりの値段で決済されるとは限りません</strong>。たとえば、次のような場面です。</p>
+<ul>
+<li><strong>相場の急変</strong>：重要な経済指標の発表や大きなニュースで、短い時間に値段が大きく飛ぶ</li>
+<li><strong>週明けの窓開け</strong>：週末に大きなニュースがあり、週明けの取引が金曜日の終わりの値段から大きく離れて始まる</li>
+<li><strong>取引が少ない時間帯</strong>：FXのスプレッドが広がり、思った値段で取引しにくくなる</li>
+</ul>
+<p>こうした場面では、ロスカットの水準を飛び越えた値段で決済され、<strong>口座残高がマイナスになる（預けた証拠金を上回る損失が出る）</strong>ことがあります。その場合、<strong>不足分は業者に支払う（入金する）義務があり</strong>、ロスカットされたからといって帳消しにはなりません。入金の期限や手続きは業者ごとに定められているため、契約締結前交付書面などで確認しておきましょう。</p>
+<p>具体的な流れは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」の例で、急変時のリスクは「<span class="pending" title="D-04は準備中の記事です">相場急変・窓開け・スリッページのリスク<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<h2 id="sec-8">ロスカットされにくくするための考え方</h2>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>「この維持率なら安全」という数字はありません</strong><br />
+相場がどれだけ動くかは誰にも分からないため、一律に安全といえる証拠金維持率やレバレッジはありません。ここでは判断の考え方を紹介します。</p>
+</blockquote>
+<p>ロスカットされにくくするための考え方として、次の3つがあります。</p>
+<p><strong>① 「上限25倍」と「実際にかけるレバレッジ」は別物と考える</strong></p>
+<p>25倍はあくまで「これ以上かけてはいけない上限」です。実際に取引するときのレバレッジ（<strong>実効レバレッジ</strong>＝取引額÷口座の資金）は、口座に入れるお金と取引数量で自分で決められます。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場や業者の取引条件ではありません）  </p>
+<p>1ドル＝150円で1万ドル（取引額150万円、必要証拠金6万円）を買い、<strong>1円の円高（損失1万円）</strong>になった場合</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>口座の資金</th>
+<th>実効レバレッジ</th>
+<th>口座資金に対する損失</th>
+<th>損失後の証拠金維持率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6万円</td>
+<td>25倍</td>
+<td>約－16.7％</td>
+<td>5万÷6万×100＝約83％</td>
+</tr>
+<tr>
+<td>15万円</td>
+<td>10倍</td>
+<td>約－6.7％</td>
+<td>14万÷6万×100＝約233％</td>
+</tr>
+<tr>
+<td>30万円</td>
+<td>5倍</td>
+<td>約－3.3％</td>
+<td>29万÷6万×100＝約483％</td>
+</tr>
+<tr>
+<td>150万円</td>
+<td>1倍</td>
+<td>約－0.7％</td>
+<td>149万÷6万×100＝約2,483％</td>
+</tr>
+</tbody>
+</table></div>
+<p>※上限いっぱい（25倍）で取引すると、少しでも逆に動けば必要証拠金を下回り、ロスカットや追加入金の対象になりやすくなります。</p>
+</blockquote>
+<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>実効レバレッジ別の比較表。上の表をもとに、同じ「1円の値動き」に対して、口座資金に対する損失の割合が実効レバレッジによってどう変わるかを横棒グラフで並べる。「数値は説明用の例示」と明記</div>
+
+<p><strong>② 取引額を抑える</strong></p>
+<p>同じ資金でも、取引数量を少なくすれば実効レバレッジは下がり、証拠金維持率に余裕ができます。自分に合った取引数量の考え方は「<span class="pending" title="C-01は準備中の記事です">FXの資金管理とFXのロット計算<small>（準備中）</small></span>」で解説しています。</p>
+<p><strong>③ 自分で逆指値の損切りを置く</strong></p>
+<p>ロスカットは「業者が決めた水準」での強制的な決済です。それより前に、<strong>自分で決めた位置で損切りする注文（逆指値注文）</strong>を入れておけば、ロスカットに頼らずに損失をコントロールしやすくなります。ただし、逆指値注文も相場の急変時には指定した値段より不利な値段で約定することがあります。注文方法は「<span class="pending" title="B-02は準備中の記事です">注文方法の基本：成行・指値・逆指値<small>（準備中）</small></span>」、損切りの位置の決め方は「<span class="pending" title="C-02は準備中の記事です">FXの損切りの目安は？<small>（準備中）</small></span>」をご覧ください。</p>
+<p>証拠金維持率をどれくらい保てばよいかは、取引する通貨ペアや期間、自分の資金によって変わります。計算方法は「<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？<small>（準備中）</small></span>」で解説しています。</p>
+<h2 id="sec-9">まとめ：次に読む記事</h2>
+<p>この記事で出てきた用語を振り返りましょう。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>用語</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ロスカット</td>
+<td>含み損が業者の決めた水準に達したとき、業者が強制的に決済する仕組み。損失の拡大を抑えるもので、損失をなくすものではない</td>
+</tr>
+<tr>
+<td>証拠金</td>
+<td>取引のために業者に預ける担保のお金</td>
+</tr>
+<tr>
+<td>レバレッジ</td>
+<td>取引額÷証拠金。日本の個人は最大25倍（取引額の4％以上の証拠金が必要）</td>
+</tr>
+<tr>
+<td>証拠金維持率</td>
+<td>有効証拠金÷必要証拠金×100。含み損が増えると下がる</td>
+</tr>
+<tr>
+<td>ロスカット水準</td>
+<td>ロスカットされる証拠金維持率などの基準。業者によって異なる</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>ロスカットとは</strong>、損失の拡大を抑えるための強制決済の仕組みです</li>
+<li>日本の個人のレバレッジは<strong>最大25倍</strong>ですが、それは上限であって、実際にかけるレバレッジは自分で決められます</li>
+<li>相場の急変時には、ロスカットがあっても<strong>証拠金を上回る損失</strong>が出ることがあります</li>
+</ul>
+<p>次は、この記事で学んだ証拠金維持率を自分で計算して、ロスカットまでの余裕を確かめてみましょう。そのあとで、FXの「買い」「売り」の考え方に進むのがおすすめです。</p>
+<p>👉 <strong>次に読む記事：<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？計算方法とロスカットまでの値幅シミュレーション<small>（準備中）</small></span></strong>
+👉 <strong>その次に：<span class="pending" title="A-04は準備中の記事です">通貨ペアと「買い」「売り」：どちらからでも取引できる理由<small>（準備中）</small></span></strong>
+👉 <strong>取引前の準備を確認したい方へ：<span class="pending" title="A-07は準備中の記事です">FX初心者がまずやること：取引前の準備と金融庁登録業者の確認<small>（準備中）</small></span></strong></p>
+<hr />
+<p><strong>【免責事項】</strong>
+本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示です。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。ロスカットは損失の拡大を抑えるための仕組みであり、損失の発生や証拠金を上回る損失を防ぐことを保証するものではありません。</p>
+<p><strong>参考：</strong></p>
+<ul>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年10月25日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/customers/" target="_blank" rel="noopener">個人顧客を相手方とするFX取引に係る証拠金規制</a>」（参照日：2026年10月25日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/" target="_blank" rel="noopener">FX取引の規制について</a>」（参照日：2026年10月25日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年10月25日）</li>
+</ul>
+  </div>
+  <nav class="pager" aria-label="入門の前後の記事"><a class="pager__link" href="article-a02.html"><small>← 前の記事</small>A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a><span class="pager__link is-pending"><small>次の記事 →</small>A-04 通貨ペアと「買い」「売り」：どちらからでも取引できる理由（準備中）</span></nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div><p class="footer-title">はじめてのFX学習ノート（仮称）</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログ（見本）。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
+    <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
+  </div>
+  <p class="wrap footer-mock">見本（モック）・非公開｜作成日 2026年10月26日｜契約・ドメイン取得・公開はしていません</p>
+</footer>
+<script>
+/* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */
+(function () {
+  var html = document.documentElement;
+  html.classList.add('js');
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('gnav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    nav.classList.toggle('is-open', open);
+  }
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false); btn.focus();
+    }
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  var mq = window.matchMedia('(min-width: 761px)');
+  var onChange = function () { if (mq.matches) setOpen(false); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+})();
+</script>
+</body>
+</html>

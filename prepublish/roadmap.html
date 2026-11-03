@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ｜はじめてのFX学習ノート</title>
+<meta name="description" content="FXの勉強は何から始めればいいか迷う初心者へ。「リスクを知る→仕組みを知る→デモで練習→ルールを決めて実践」の4ステップで、当ブログの記事を読む順番と各段階のゴールを整理しました。無登録業者や「必ず稼げる」勧誘への注意点も解説します。">
+<style>
+:root{
+  --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
+  --bg:#f6f8fb; --card:#fff; --warn-bg:#fff7e6; --warn-line:#e0a100; --note-bg:#eef5ff; --note-line:#5b8def;
+  --step1:#2f855a; --step2:#2b6cb0; --step3:#b7791f; --step4:#6b46c1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px}
+a{color:var(--navy-2)} a:hover{color:var(--navy)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.small{font-size:.86rem;color:var(--muted)}
+.mock-banner{background:#3b3b3b;color:#fff;text-align:center;font-size:.8rem;padding:6px 12px;letter-spacing:.02em}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700}
+.logo__mark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--navy);color:#fff;font-size:.85rem}
+.logo__text{font-size:1.1rem}.logo__text small{font-weight:400;color:var(--muted);font-size:.75rem;margin-left:4px}
+.badge-mock{border:1px dashed #c53030;color:#c53030;font-size:.75rem;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.gnav ul{display:flex;gap:4px;list-style:none;margin:0 auto;padding-bottom:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gnav a{display:block;padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.9rem;white-space:nowrap}
+.gnav a:hover{background:var(--bg)} .gnav a[aria-current]{background:var(--navy);color:#fff}
+.main{padding-top:24px;padding-bottom:48px}
+.eyebrow{color:var(--navy-2);font-weight:700;font-size:.85rem;margin:0 0 4px;letter-spacing:.05em}
+.hero{background:linear-gradient(135deg,#1f3a5f,#2c5282);color:#fff;border-radius:14px;padding:36px 28px;margin-bottom:20px}
+.hero .eyebrow{color:#bcd3f2}.hero h1{font-size:1.75rem;line-height:1.45;margin:.2em 0 .5em}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;background:#fff;color:var(--navy);padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn:hover{opacity:.9;color:var(--navy)} .btn--ghost:hover{color:#fff}
+.section{margin:32px 0}.section--muted{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 24px 12px}
+.section__title{font-size:1.3rem;border-left:5px solid var(--navy);padding-left:10px}
+.road{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end}
+.road__step a{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink);height:100%}
+.road__step--1{--c:var(--step1)} .road__step--2{--c:var(--step2);margin-bottom:0}.road__step--3{--c:var(--step3)}.road__step--4{--c:var(--step4)}
+.road__step--1 a{min-height:200px}.road__step--2 a{min-height:225px}.road__step--3 a{min-height:250px}.road__step--4 a{min-height:275px}
+.road__num{color:var(--c);font-weight:700;font-size:.85rem}.road__name{font-size:1.3rem;font-weight:700}
+.road__goal{font-size:.85rem;color:var(--muted);flex:1}.road__count{font-size:.8rem;color:var(--c);font-weight:700}
+.road__step a:hover{box-shadow:0 4px 14px rgba(31,58,95,.12)}
+.post-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.post-card{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.post-card__id{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--muted);min-width:3.2em}
+.post-card__title{flex:1;min-width:12em;font-weight:700}
+.post-card.is-pending{background:#fafbfc}.post-card.is-pending .post-card__title{color:var(--muted);font-weight:400}
+.tag{font-size:.72rem;border:1px solid var(--line);color:var(--muted);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag--draft{border-color:var(--step2);color:var(--step2)}.tag--missing{border-color:#c53030;color:#c53030}
+.crumbs ol{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin:0 8px}
+.steps{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:20px}
+.steps__now{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
+.steps ol{list-style:none;margin:0;padding:10px 6px 2px 0;display:flex;gap:6px;overflow-x:auto}
+.steps__item a{display:block;padding:6px 12px;border-radius:6px;background:var(--bg);text-decoration:none;color:var(--muted);font-size:.85rem;white-space:nowrap;position:relative}
+.steps__item.is-current a{background:var(--navy);color:#fff;font-weight:700}
+.steps__item.is-current a::after{content:"いまここ";position:absolute;top:-9px;right:-4px;background:#c53030;color:#fff;font-size:.6rem;padding:0 5px;border-radius:4px}
+.article{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 32px}
+.article__head h1{font-size:1.6rem;line-height:1.5;margin:.3em 0}
+.article__meta{display:flex;gap:8px;align-items:center;margin:0}.article__id{font-family:ui-monospace,monospace;color:var(--muted);font-size:.85rem}
+.progress{display:inline-block;background:var(--bg);border-radius:6px;padding:2px 10px;font-size:.85rem;margin:0}
+.toc{background:var(--bg);border-radius:10px;padding:12px 20px;margin:20px 0}
+.toc__title{font-weight:700;margin:0}.toc ol{margin:6px 0 0;padding-left:1.4em}
+.prose h2{font-size:1.35rem;border-bottom:2px solid var(--navy);padding-bottom:6px;margin-top:2.2em;scroll-margin-top:110px}
+.prose h3{font-size:1.12rem;border-left:4px solid var(--navy-2);padding-left:10px;margin-top:1.8em}
+.prose li{margin:.3em 0}
+.callout{margin:1.2em 0;padding:12px 18px;border-radius:10px;border-left:5px solid}
+.callout p{margin:.4em 0}.callout ul{margin:.3em 0;padding-left:1.3em}
+.callout--warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.callout--note{background:var(--note-bg);border-color:var(--note-line);font-size:.95rem}
+.table-wrap{overflow-x:auto;margin:1em 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.figure-ph{border:2px dashed #b8c4d3;border-radius:10px;padding:14px 18px;margin:1.2em 0;color:var(--muted);font-size:.88rem;background:#fbfcfe}
+.figure-ph__label{display:block;font-weight:700;color:var(--navy-2);margin-bottom:4px}
+.pending{color:var(--muted);border-bottom:1px dotted var(--muted)}.pending small{font-size:.75em}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.pager__link{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;font-size:.9rem}
+.pager__link small{display:block;color:var(--muted)}.pager__link.is-pending{color:var(--muted);background:#fafbfc}
+.pager__link:last-child{text-align:right}
+.cat-head{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:16px}
+.cat-head h1{margin:0 0 6px}.goal{margin:0 0 6px}
+.notice{background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 14px;font-size:.9rem}
+.back{margin-top:20px}
+.promise{padding-left:1.2em}
+.form{display:grid;gap:12px;max-width:520px}.form label{display:grid;gap:4px;font-size:.9rem}
+.form input,.form textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:#f3f4f6}
+.form button{justify-self:start;padding:8px 18px;border-radius:6px;border:0;background:#cbd5e0;color:#4a5568}
+.site-footer{background:#1a2b44;color:#cfd8e3;padding:32px 0 16px;font-size:.9rem}
+.site-footer a{color:#e2e8f0;text-decoration:none}.site-footer a:hover{text-decoration:underline}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.footer-grid ul{list-style:none;padding:0;margin:0}.footer-title{font-weight:700;color:#fff;margin:0 0 6px}
+.site-footer .small{color:#a0aec0}
+.footer-mock{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#ff9d9d}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .road{grid-template-columns:1fr 1fr}.road__step a{min-height:0 !important}
+  .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
+  .article{padding:20px 16px;border-radius:10px}.article__head h1{font-size:1.3rem}
+  .footer-grid{grid-template-columns:1fr}
+  .pager{grid-template-columns:1fr}.pager__link:last-child{text-align:left}
+  .badge-mock{display:none}
+}
+@media (max-width:420px){.road{grid-template-columns:1fr}}
+
+/* ===== モバイル対応（レスポンシブ）追加分 ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{max-width:100%;overflow-x:hidden}
+body{line-height:1.75;overflow-wrap:break-word;word-break:normal}
+img,svg,video,iframe,canvas{max-width:100%;height:auto}
+pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-break:break-word;background:#f3f6fa;border-radius:8px;padding:12px 14px;font-size:.88rem}
+code{overflow-wrap:anywhere;word-break:break-word}
+.prose a,.prose td,.prose p,.prose li,.callout,.figure-ph{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.main,.article,.prose{min-width:0}
+/* ハンバーガーボタン（PCでは非表示） */
+.nav-toggle{display:none;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.nav-toggle:focus-visible,.gnav a:focus-visible,.btn:focus-visible{outline:3px solid var(--note-line);outline-offset:2px}
+.nav-toggle__bar,.nav-toggle__bar::before,.nav-toggle__bar::after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.nav-toggle__bar::before,.nav-toggle__bar::after{content:"";position:absolute;left:0}
+.nav-toggle__bar::before{top:-6px}.nav-toggle__bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.75}
+  .wrap{padding:0 14px}
+  .main{padding-top:14px;padding-bottom:32px}
+  .mock-banner{font-size:.72rem;padding:4px 10px}
+  .site-header__inner{padding-top:8px;padding-bottom:8px}
+  .logo{min-width:0}.logo__text{font-size:1rem;line-height:1.35}.logo__text small{display:none}
+  .logo__mark{width:32px;height:32px;flex-shrink:0}
+  /* JSが動くときだけ折りたたむ（JS無効でもメニューは見える） */
+  .js .nav-toggle{display:inline-flex}
+  .js .gnav{display:none;border-top:1px solid var(--line);background:#fff;box-shadow:0 8px 16px rgba(31,58,95,.10)}
+  .js .gnav.is-open{display:block;max-height:calc(100vh - 90px);overflow-y:auto}
+  .js .gnav ul{flex-direction:column;gap:2px;padding:8px 14px 12px;overflow:visible}
+  .js .gnav a{display:flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:8px;font-size:1rem}
+  .gnav a{min-height:44px;display:flex;align-items:center}
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px}
+  .hero__cta .btn{flex:1 1 100%}
+  .hero{padding:22px 16px;border-radius:12px}.hero h1{font-size:1.35rem}.hero br{display:none}
+  .section{margin:24px 0}.section--muted{padding:4px 16px 10px}
+  .section__title{font-size:1.15rem}
+  .article{padding:18px 14px;border-radius:10px}.article__head h1{font-size:1.3rem;line-height:1.5}
+  .article__meta{flex-wrap:wrap}
+  .prose h2{font-size:1.2rem;scroll-margin-top:80px}.prose h3{font-size:1.05rem}
+  .prose ul,.prose ol,.toc ol{padding-left:1.3em}
+  .toc{padding:10px 14px}.toc a{display:inline-block;padding:4px 0}
+  .callout{padding:10px 12px}
+  .figure-ph{padding:12px}
+  table{font-size:.85rem}th,td{padding:6px 8px}
+  .cat-head{padding:16px}
+  .cat-head h1{font-size:1.4rem}
+  .post-card{padding:12px}.post-card__title{min-width:0;flex-basis:100%}
+  .steps ol{padding-top:12px}
+  .steps__item a{min-height:40px;display:flex;align-items:center}
+  .crumbs ol{font-size:.8rem}
+  .pager__link{min-height:44px}
+  .site-footer a{display:inline-block;padding:6px 0}
+  .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
+  .form button{min-height:44px}
+}
+
+/* ===== 公開用コピーで追加 ===== */
+/* 図の差し替え枠（FIGURE_MODE="frame" のときだけ表示。"hidden" では非表示） */
+.figure-slot{border:1px solid var(--line);border-radius:10px;min-height:120px;margin:1.2em 0;background:#fbfcfe;display:flex;align-items:center;justify-content:center}
+.figure-slot[hidden]{display:none}
+.figure-slot__label{color:var(--muted);font-size:.8rem}
+.tag--soon{border-color:var(--line);color:var(--muted)}
+.tag--pub{border-color:var(--step2);color:var(--step2)}
+.draft-note{background:#fffbea;border:1px solid #f6e05e;border-radius:8px;padding:10px 14px;font-size:.88rem;margin:0 0 1.2em}
+.footer-copy{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#c3cfdf}
+.contact-mail{font-size:1.05rem;font-weight:700}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small></small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
+  </div>
+  <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html" aria-current="page">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
+</header>
+<main class="wrap main">
+<nav class="crumbs" aria-label="パンくずリスト"><ol><li><a href="index.html">トップ</a></li><li aria-current="page">FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</li></ol></nav>
+<nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item is-current"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
+<article class="article">
+  <header class="article__head">
+    <p class="article__meta"><span class="article__id">A-00</span></p>
+    <h1>FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</h1>
+    <p class="progress">STEP1 入門：全8本中 1本目（カリキュラム全28本の地図）</p>
+    
+  </header>
+  <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">結論：FXの勉強は「リスクを知る→仕組み→練習→実践」の順</a></li><li><a href="#sec-3">STEP1 入門：取引の前にリスクと仕組みを知る</a></li><li><a href="#sec-6">STEP2 基礎：注文・計算・デモで練習する</a></li><li><a href="#sec-7">STEP3 実践：資金管理と損切りルールを先に決める</a></li><li><a href="#sec-8">STEP4 応用：分析と検証で改善する</a></li><li><a href="#sec-9">勉強中に気をつけたいこと</a></li><li><a href="#sec-10">よくある質問</a></li><li><a href="#sec-11">まとめ：次に読む記事</a></li></ol></aside>
+  <div class="prose">
+<p>「FXの勉強は何から始めればいいの？」と迷っている方へ。結論からお伝えすると、<strong>いきなり口座開設や取引から入るのではなく、「リスクを知る→仕組みを知る→お金を使わずに練習する→ルールを決めて実践する」の順番で進めるのがおすすめ</strong>です。</p>
+<p>この記事では、当ブログの記事を4つのステップに分けて、どの順番で読めばよいかをまとめました。迷ったら、いつでもこのページに戻ってきてください。</p>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスクについて</strong><br />
+FXは元本保証のない取引です。相場が予想と逆に動けば損失が出て、相場の急変時などには、預けたお金（証拠金）を上回る損失が出ることもあります。くわしくは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」で解説しています。</p>
+</blockquote>
+<h2 id="sec-1">結論：FXの勉強は「リスクを知る→仕組み→練習→実践」の順</h2>
+<p>FXの勉強で一番大切なのは、<strong>「どうすれば儲かるか」より先に「どうやって損をするのか」を知ること</strong>です。</p>
+<p>FXは、少ない資金で大きな金額を取引できる仕組み（レバレッジ）があるため、仕組みをよく知らないまま始めると、思った以上に早くお金が減ってしまうことがあります。だからこそ、当ブログでは次の順番をおすすめしています。</p>
+<ol>
+<li><strong>リスクを知る</strong>：どんなときに損をするのか、最悪どうなるのか</li>
+<li><strong>仕組みを知る</strong>：為替レート、証拠金、レバレッジ、ロスカットなど</li>
+<li><strong>練習する</strong>：デモ取引で、実際のお金を使わずに注文や損切りを試す</li>
+<li><strong>実践する</strong>：資金管理と損切りのルールを先に決めてから、少しずつ</li>
+</ol>
+<p>口座開設を考えるのは、少なくとも1と2を終えて「自分はやるかどうか」を判断してからでも遅くありません。</p>
+<h3 id="sec-2">4ステップ学習ロードマップ（全体図）</h3>
+<p>各ステップのゴールは次のとおりです。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ステップ</th>
+<th>ゴール（できるようになること）</th>
+<th>最初に読む記事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STEP1 入門</td>
+<td>取引を始める前に、FXの仕組みと損失・レバレッジ・ロスカットのリスクを理解し、「やるかどうか」を自分で判断できる</td>
+<td><a href="article-a02.html">A-02 始める前に知るFXの損失リスク</a></td>
+</tr>
+<tr>
+<td>STEP2 基礎</td>
+<td>注文・数量・損益・証拠金維持率を自分で計算でき、デモ取引で一連の操作を安全に練習できる</td>
+<td>B-01 証拠金維持率の目安は？</td>
+</tr>
+<tr>
+<td>STEP3 実践</td>
+<td>資金管理と損切りルールを先に決めたうえで、少額の取引と記録・振り返りができる</td>
+<td>C-01 FXの資金管理とFXのロット計算</td>
+</tr>
+<tr>
+<td>STEP4 応用</td>
+<td>複数の分析手法や税金・急変リスクを理解し、自分のルールを検証して改善できる</td>
+<td>D-01 複数の時間足を組み合わせた分析</td>
+</tr>
+</tbody>
+</table></div>
+<p>なお、各ステップにかかる期間は、使える時間や理解のペースによって人それぞれです。「〇週間で終わる」といった目安にこだわらず、<strong>「その記事の内容を自分の言葉で説明できるか」</strong>を進むときの基準にしてみてください。</p>
+<h2 id="sec-3">STEP1 入門：取引の前にリスクと仕組みを知る</h2>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>ここが一番大事なステップです</strong><br />
+FXは元本保証がなく、証拠金を上回る損失が出ることもあります。STEP1の3本（特にA-02・A-03）は、取引を考える前に読んでおいてください。→「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」</p>
+</blockquote>
+<p>入門では、まず次の3本をこの順番で読むのがおすすめです。1本目の「FXとは？」は近日公開のため、公開までは2本目の損失リスクの記事から読み進めてください。</p>
+<ol>
+<li><strong>FXとは？為替レートと円高・円安のしくみ</strong><br>「1ドル＝150円」が「1ドル＝155円」になるとはどういうことか（数字は説明用の例で、実際の相場ではありません）、円高・円安で何が起きるかを学びます。</li>
+<li><strong><a href="article-a02.html">始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></strong><br>FXでどうやって損をするのか、最悪の場合どうなるのかを先に知っておきます。</li>
+<li><strong><a href="article-a03.html">ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</a></strong><br>少ない資金で大きな取引ができる仕組みと、損失が膨らんだときに強制的に取引が終わる「ロスカット」を学びます。</li>
+</ol>
+<h3 id="sec-4">入門で覚えたい用語</h3>
+<p>入門の残りの記事では、FXでよく出てくる用語を学びます。まずは「一言でいうと何か」だけ押さえておけば大丈夫です。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>用語</th>
+<th>一言でいうと</th>
+<th>くわしい記事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通貨ペア</td>
+<td>「米ドル/円」のように、取引する2つの通貨の組み合わせ</td>
+<td>A-04</td>
+</tr>
+<tr>
+<td>pips（ピップス）</td>
+<td>値動きを数える単位。米ドル/円など円を含む通貨ペアでは1pips＝0.01円（1銭）が一般的</td>
+<td>A-05</td>
+</tr>
+<tr>
+<td>FXのスプレッド</td>
+<td>買うときの値段と売るときの値段の差。実質的な取引コストになる</td>
+<td>A-05</td>
+</tr>
+<tr>
+<td>スワップポイント</td>
+<td>2つの通貨の金利差から生まれる調整額。受け取るだけでなく、支払いになることもある</td>
+<td>A-06</td>
+</tr>
+<tr>
+<td>証拠金維持率</td>
+<td>取引に必要な証拠金に対して、口座にどれくらい余裕があるかを示す割合</td>
+<td><a href="article-a03.html">A-03</a>・B-01</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="sec-5">取引を始める前にやること</h3>
+<p>仕組みとリスクが分かったら、取引の前に次の準備をしておきましょう。</p>
+<ul>
+<li><strong>生活資金と分ける</strong>：家賃や生活費、近いうちに使う予定のお金は使わない</li>
+<li><strong>登録業者かを確認する</strong>：日本に住む人を相手にFXを取り扱うには、金融商品取引法にもとづく登録が必要です。金融庁のウェブサイトで登録の有無を確認できます</li>
+<li><strong>デモ取引から始める</strong>：実際のお金を使わずに、注文・決済・損切りの操作に慣れる</li>
+</ul>
+<p>具体的な手順は「FX初心者がまずやること：取引前の準備と金融庁登録業者の確認」でまとめています。</p>
+<h2 id="sec-6">STEP2 基礎：注文・計算・デモで練習する</h2>
+<p>STEP2では、「実際に取引するとしたら、どう注文して、いくら損益が出るのか」を自分で計算できるようにします。ここでも、<strong>まだ実際のお金は使いません</strong>。</p>
+<ul>
+<li><strong>B-02 注文方法の基本：成行・指値・逆指値</strong>：損失を限定する「逆指値（ぎゃくさしね）」注文の出し方を学びます</li>
+<li><strong>B-04 FXのロットとは？取引数量と1pipsあたりの損益計算</strong>：取引数量によって、同じ値動きでも損益の大きさが変わることを計算で確かめます</li>
+<li><strong>B-01 証拠金維持率の目安は？計算方法とロスカットまでの値幅シミュレーション</strong>：自分の資金と取引数量から、ロスカットまでどれくらい余裕があるかを計算します</li>
+<li><strong>B-07 デモ取引の始め方と練習メニュー</strong>：ここまでの知識を、デモ取引で実際に操作して確認します</li>
+</ul>
+<h2 id="sec-7">STEP3 実践：資金管理と損切りルールを先に決める</h2>
+<p>STEP3では、<strong>利益の目標よりも先に「どこまでなら損をしてもよいか」を決めます</strong>。これが資金管理の考え方です。</p>
+<ul>
+<li><strong>C-01 FXの資金管理とFXのロット計算</strong>：許容できる損失額から、取引数量を逆算する方法</li>
+<li><strong>C-02 FXの損切りの目安は？</strong>：損切りの位置を、一律の数字ではなく相場の形と自分の許容損失から決める考え方</li>
+<li><strong>C-07 FXの少額取引は危険？</strong>：少額でもレバレッジ次第で損失が大きくなること、実取引に進む前のチェックリスト</li>
+</ul>
+<p>「損切りは〇pipsが正解」「資金の〇%なら安全」といった、誰にでも当てはまる数字はありません。当ブログでも一律の数値は示さず、<strong>自分の資金や状況に合わせて決めるための考え方</strong>として解説しています。</p>
+<h2 id="sec-8">STEP4 応用：分析と検証で改善する</h2>
+<p>STEP4では、相場を分析する手法や、知っておきたいリスク・制度を学び、自分のルールを見直していきます。</p>
+<ul>
+<li><strong>D-01 複数の時間足を組み合わせた分析</strong></li>
+<li><strong>D-04 相場急変・窓開け・スリッページのリスク</strong></li>
+<li><strong>D-05 FXの税金：申告分離課税と確定申告の基本</strong></li>
+<li><strong>D-06 売買ルールの検証方法と過剰最適化の注意</strong></li>
+</ul>
+<p>ここで学ぶ分析手法は、「これを使えば勝てる方法」ではありません。<strong>判断の材料を増やすための道具</strong>であり、どの手法にも当てはまらない場面や、逆の結果になる場面があります。手法を学んだら、必ず過去のデータやデモで検証し、結果を過信しないようにしましょう。</p>
+<h2 id="sec-9">勉強中に気をつけたいこと</h2>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>「必ず稼げる」勧誘に注意</strong><br />
+FXに「必ず儲かる」「絶対に負けない」方法はありません。こうした言葉で勧誘してくる人や業者には注意してください。</p>
+</blockquote>
+<p>FXの勉強を始めると、SNSや広告で次のような情報を目にすることがあります。</p>
+<ul>
+<li>「短期間で必ず稼げる」「誰でも月〇万円」といった勧誘</li>
+<li>高額な情報商材やオンラインサロン、自動売買ツールの販売</li>
+<li>日本国内の規制（個人は最大25倍）をはるかに上回る高レバレッジを宣伝する海外の業者</li>
+</ul>
+<p>金融庁は、金融商品取引法の登録を受けていない海外の業者による勧誘に注意するよう呼びかけています。無登録の業者と取引すると、トラブルが起きても相手を追及することは極めて難しいとされています。</p>
+<p><strong>登録業者かどうかの確認方法</strong></p>
+<ol>
+<li>金融庁ウェブサイトの「<a href="https://www.fsa.go.jp/menkyo/menkyo.html" target="_blank" rel="noopener">免許・許可・登録等を受けている事業者一覧</a>」を開く</li>
+<li>「金融商品取引業者」の一覧で業者名を検索する（金融事業者の一括検索機能を使って、名称や電話番号で調べることもできます）</li>
+<li>あわせて、金融庁（財務局）が無登録業者として警告を出している業者の一覧も確認する</li>
+</ol>
+<p>くわしくは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」と「FX初心者がまずやること」で解説しています。</p>
+<h2 id="sec-10">よくある質問</h2>
+<p><strong>Q. FXはいくらから始めればいいですか？</strong></p>
+<p>A. 「いくらなら大丈夫」という一律の金額はありません。大切なのは金額そのものより、<strong>生活資金や近いうちに使う予定のお金を使わないこと</strong>、そして<strong>なくなっても生活に影響しない範囲にとどめること</strong>です。また、少額でもレバレッジを高くすれば損失は大きくなります。くわしくは「FX初心者がまずやること」「FXの少額取引は危険？」をご覧ください。</p>
+<p><strong>Q. どれくらい勉強すれば取引を始めていいですか？</strong></p>
+<p>A. 必要な期間は人によって違います。目安にしたいのは期間ではなく、次のようなことを<strong>自分の言葉で説明できるかどうか</strong>です。</p>
+<ul>
+<li>FXでどうやって損をするのか、最悪の場合どうなるのか（A-02）</li>
+<li>レバレッジ・証拠金・ロスカットの関係（A-03）</li>
+<li>取引する前に、どこで損切りするかを決めているか（C-02）</li>
+</ul>
+<p>説明できないところがあれば、その記事に戻って復習してから進みましょう。</p>
+<p><strong>Q. 勉強すれば勝てるようになりますか？</strong></p>
+<p>A. 勉強しても、利益が出ることが保証されるわけではありません。ただ、仕組みやリスクを知っておくことで、知らずに大きな損失を出してしまうことを避けやすくなります。</p>
+<h2 id="sec-11">まとめ：次に読む記事</h2>
+<ul>
+<li>FXの勉強は「<strong>リスクを知る→仕組み→練習→実践</strong>」の順で進めましょう</li>
+<li>いきなり口座開設や取引をせず、まずはSTEP1の入門記事を読むのがおすすめです</li>
+<li>「必ず稼げる」といった勧誘や、無登録の業者には注意しましょう</li>
+</ul>
+<p>次は、取引を考える前に知っておきたい「どうやって損をするのか」から読みましょう。</p>
+<p>👉 <strong>次に読む記事：<a href="article-a02.html">始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></strong></p>
+<p><strong>ステージ別の記事一覧</strong></p>
+<p>カリキュラムは全28本の予定です。入門は全8本（このロードマップを含む）で、うち3本を公開中です。</p>
+<p>公開中</p>
+<ul>
+<li><a href="roadmap.html">A-00 FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</a>（この記事）</li>
+<li><a href="article-a02.html">A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></li>
+<li><a href="article-a03.html">A-03 ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</a></li>
+</ul>
+<p>近日公開</p>
+<ul>
+<li>STEP1 入門：A-01 FXとは？為替レートと円高・円安のしくみ／A-04 通貨ペアと「買い」「売り」／A-05 FXの1pipsとは？／A-06 スワップポイントとは？／A-07 FX初心者がまずやること</li>
+<li>STEP2 基礎：全7本（B-01〜B-07）</li>
+<li>STEP3 実践：全7本（C-01〜C-07）</li>
+<li>STEP4 応用：全6本（D-01〜D-06）</li>
+</ul>
+<hr />
+<p><strong>【免責事項】</strong>
+本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示です。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。学習の進め方や必要な期間は人によって異なり、本記事の内容どおりに学習しても利益が得られることを保証するものではありません。</p>
+<p><strong>参考：</strong></p>
+<ul>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年10月25日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年10月25日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/menkyo/menkyo.html" target="_blank" rel="noopener">免許・許可・登録等を受けている事業者一覧</a>」（参照日：2026年10月25日）</li>
+</ul>
+  </div>
+  <nav class="pager" aria-label="前後の記事"><span></span><a class="pager__link" href="article-a02.html"><small>次へ →</small>A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div><p class="footer-title">はじめてのFX学習ノート</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログです。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
+    <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
+  </div>
+  <p class="wrap footer-copy">© 2026 はじめてのFX学習ノート　当サイトは一般的な情報提供を目的としており、投資助言ではありません。詳しくは<a href="disclaimer.html">免責事項</a>をご覧ください。</p>
+</footer>
+<script>
+/* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */
+(function () {
+  var html = document.documentElement;
+  html.classList.add('js');
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('gnav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    nav.classList.toggle('is-open', open);
+  }
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false); btn.focus();
+    }
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  var mq = window.matchMedia('(min-width: 761px)');
+  var onChange = function () { if (mq.matches) setOpen(false); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+})();
+</script>
+</body>
+</html>

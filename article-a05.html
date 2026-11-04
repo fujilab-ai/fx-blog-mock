@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FXの1pipsとは？いくら？数え方とFXのスプレッドの基本｜はじめてのFX学習ノート</title>
+<meta name="description" content="FXの1pipsとは、値動きを数える単位です。米ドル/円など円を含む通貨ペアでは多くの場合1pips＝0.01円（1銭）。pipsの数え方と、買値と売値の差であるFXのスプレッドが実質的な取引コストになる理由を、説明用の計算例で解説します。">
+<style>
+:root{
+  --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
+  --bg:#f6f8fb; --card:#fff; --warn-bg:#fff7e6; --warn-line:#e0a100; --note-bg:#eef5ff; --note-line:#5b8def;
+  --step1:#2f855a; --step2:#2b6cb0; --step3:#b7791f; --step4:#6b46c1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px}
+a{color:var(--navy-2)} a:hover{color:var(--navy)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.small{font-size:.86rem;color:var(--muted)}
+.mock-banner{background:#3b3b3b;color:#fff;text-align:center;font-size:.8rem;padding:6px 12px;letter-spacing:.02em}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700}
+.logo__mark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--navy);color:#fff;font-size:.85rem}
+.logo__text{font-size:1.1rem}.logo__text small{font-weight:400;color:var(--muted);font-size:.75rem;margin-left:4px}
+.badge-mock{border:1px dashed #c53030;color:#c53030;font-size:.75rem;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.gnav ul{display:flex;gap:4px;list-style:none;margin:0 auto;padding-bottom:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gnav a{display:block;padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.9rem;white-space:nowrap}
+.gnav a:hover{background:var(--bg)} .gnav a[aria-current]{background:var(--navy);color:#fff}
+.main{padding-top:24px;padding-bottom:48px}
+.eyebrow{color:var(--navy-2);font-weight:700;font-size:.85rem;margin:0 0 4px;letter-spacing:.05em}
+.hero{background:linear-gradient(135deg,#1f3a5f,#2c5282);color:#fff;border-radius:14px;padding:36px 28px;margin-bottom:20px}
+.hero .eyebrow{color:#bcd3f2}.hero h1{font-size:1.75rem;line-height:1.45;margin:.2em 0 .5em}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;background:#fff;color:var(--navy);padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn:hover{opacity:.9;color:var(--navy)} .btn--ghost:hover{color:#fff}
+.section{margin:32px 0}.section--muted{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 24px 12px}
+.section__title{font-size:1.3rem;border-left:5px solid var(--navy);padding-left:10px}
+.road{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end}
+.road__step a{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink);height:100%}
+.road__step--1{--c:var(--step1)} .road__step--2{--c:var(--step2);margin-bottom:0}.road__step--3{--c:var(--step3)}.road__step--4{--c:var(--step4)}
+.road__step--1 a{min-height:200px}.road__step--2 a{min-height:225px}.road__step--3 a{min-height:250px}.road__step--4 a{min-height:275px}
+.road__num{color:var(--c);font-weight:700;font-size:.85rem}.road__name{font-size:1.3rem;font-weight:700}
+.road__goal{font-size:.85rem;color:var(--muted);flex:1}.road__count{font-size:.8rem;color:var(--c);font-weight:700}
+.road__step a:hover{box-shadow:0 4px 14px rgba(31,58,95,.12)}
+.post-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.post-card{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.post-card__id{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--muted);min-width:3.2em}
+.post-card__title{flex:1;min-width:12em;font-weight:700}
+.post-card.is-pending{background:#fafbfc}.post-card.is-pending .post-card__title{color:var(--muted);font-weight:400}
+.tag{font-size:.72rem;border:1px solid var(--line);color:var(--muted);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag--draft{border-color:var(--step2);color:var(--step2)}.tag--missing{border-color:#c53030;color:#c53030}
+.crumbs ol{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin:0 8px}
+.steps{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:20px}
+.steps__now{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
+.steps ol{list-style:none;margin:0;padding:10px 6px 2px 0;display:flex;gap:6px;overflow-x:auto}
+.steps__item a{display:block;padding:6px 12px;border-radius:6px;background:var(--bg);text-decoration:none;color:var(--muted);font-size:.85rem;white-space:nowrap;position:relative}
+.steps__item.is-current a{background:var(--navy);color:#fff;font-weight:700}
+.steps__item.is-current a::after{content:"いまここ";position:absolute;top:-9px;right:-4px;background:#c53030;color:#fff;font-size:.6rem;padding:0 5px;border-radius:4px}
+.article{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 32px}
+.article__head h1{font-size:1.6rem;line-height:1.5;margin:.3em 0}
+.article__meta{display:flex;gap:8px;align-items:center;margin:0}.article__id{font-family:ui-monospace,monospace;color:var(--muted);font-size:.85rem}
+.progress{display:inline-block;background:var(--bg);border-radius:6px;padding:2px 10px;font-size:.85rem;margin:0}
+.toc{background:var(--bg);border-radius:10px;padding:12px 20px;margin:20px 0}
+.toc__title{font-weight:700;margin:0}.toc ol{margin:6px 0 0;padding-left:1.4em}
+.prose h2{font-size:1.35rem;border-bottom:2px solid var(--navy);padding-bottom:6px;margin-top:2.2em;scroll-margin-top:110px}
+.prose h3{font-size:1.12rem;border-left:4px solid var(--navy-2);padding-left:10px;margin-top:1.8em}
+.prose li{margin:.3em 0}
+.callout{margin:1.2em 0;padding:12px 18px;border-radius:10px;border-left:5px solid}
+.callout p{margin:.4em 0}.callout ul{margin:.3em 0;padding-left:1.3em}
+.callout--warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.callout--note{background:var(--note-bg);border-color:var(--note-line);font-size:.95rem}
+.table-wrap{overflow-x:auto;margin:1em 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.figure-ph{border:2px dashed #b8c4d3;border-radius:10px;padding:14px 18px;margin:1.2em 0;color:var(--muted);font-size:.88rem;background:#fbfcfe}
+.figure-ph__label{display:block;font-weight:700;color:var(--navy-2);margin-bottom:4px}
+.pending{color:var(--muted);border-bottom:1px dotted var(--muted)}.pending small{font-size:.75em}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.pager__link{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;font-size:.9rem}
+.pager__link small{display:block;color:var(--muted)}.pager__link.is-pending{color:var(--muted);background:#fafbfc}
+.pager__link:last-child{text-align:right}
+.cat-head{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:16px}
+.cat-head h1{margin:0 0 6px}.goal{margin:0 0 6px}
+.notice{background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 14px;font-size:.9rem}
+.back{margin-top:20px}
+.promise{padding-left:1.2em}
+.form{display:grid;gap:12px;max-width:520px}.form label{display:grid;gap:4px;font-size:.9rem}
+.form input,.form textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:#f3f4f6}
+.form button{justify-self:start;padding:8px 18px;border-radius:6px;border:0;background:#cbd5e0;color:#4a5568}
+.site-footer{background:#1a2b44;color:#cfd8e3;padding:32px 0 16px;font-size:.9rem}
+.site-footer a{color:#e2e8f0;text-decoration:none}.site-footer a:hover{text-decoration:underline}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.footer-grid ul{list-style:none;padding:0;margin:0}.footer-title{font-weight:700;color:#fff;margin:0 0 6px}
+.site-footer .small{color:#a0aec0}
+.footer-mock{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#ff9d9d}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .road{grid-template-columns:1fr 1fr}.road__step a{min-height:0 !important}
+  .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
+  .article{padding:20px 16px;border-radius:10px}.article__head h1{font-size:1.3rem}
+  .footer-grid{grid-template-columns:1fr}
+  .pager{grid-template-columns:1fr}.pager__link:last-child{text-align:left}
+  .badge-mock{display:none}
+}
+@media (max-width:420px){.road{grid-template-columns:1fr}}
+
+/* ===== モバイル対応（レスポンシブ）追加分 ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{max-width:100%;overflow-x:hidden}
+body{line-height:1.75;overflow-wrap:break-word;word-break:normal}
+img,svg,video,iframe,canvas{max-width:100%;height:auto}
+pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-break:break-word;background:#f3f6fa;border-radius:8px;padding:12px 14px;font-size:.88rem}
+code{overflow-wrap:anywhere;word-break:break-word}
+.prose a,.prose td,.prose p,.prose li,.callout,.figure-ph{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.main,.article,.prose{min-width:0}
+/* ハンバーガーボタン（PCでは非表示） */
+.nav-toggle{display:none;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.nav-toggle:focus-visible,.gnav a:focus-visible,.btn:focus-visible{outline:3px solid var(--note-line);outline-offset:2px}
+.nav-toggle__bar,.nav-toggle__bar::before,.nav-toggle__bar::after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.nav-toggle__bar::before,.nav-toggle__bar::after{content:"";position:absolute;left:0}
+.nav-toggle__bar::before{top:-6px}.nav-toggle__bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.75}
+  .wrap{padding:0 14px}
+  .main{padding-top:14px;padding-bottom:32px}
+  .mock-banner{font-size:.72rem;padding:4px 10px}
+  .site-header__inner{padding-top:8px;padding-bottom:8px}
+  .logo{min-width:0}.logo__text{font-size:1rem;line-height:1.35}.logo__text small{display:none}
+  .logo__mark{width:32px;height:32px;flex-shrink:0}
+  /* JSが動くときだけ折りたたむ（JS無効でもメニューは見える） */
+  .js .nav-toggle{display:inline-flex}
+  .js .gnav{display:none;border-top:1px solid var(--line);background:#fff;box-shadow:0 8px 16px rgba(31,58,95,.10)}
+  .js .gnav.is-open{display:block;max-height:calc(100vh - 90px);overflow-y:auto}
+  .js .gnav ul{flex-direction:column;gap:2px;padding:8px 14px 12px;overflow:visible}
+  .js .gnav a{display:flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:8px;font-size:1rem}
+  .gnav a{min-height:44px;display:flex;align-items:center}
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px}
+  .hero__cta .btn{flex:1 1 100%}
+  .hero{padding:22px 16px;border-radius:12px}.hero h1{font-size:1.35rem}.hero br{display:none}
+  .section{margin:24px 0}.section--muted{padding:4px 16px 10px}
+  .section__title{font-size:1.15rem}
+  .article{padding:18px 14px;border-radius:10px}.article__head h1{font-size:1.3rem;line-height:1.5}
+  .article__meta{flex-wrap:wrap}
+  .prose h2{font-size:1.2rem;scroll-margin-top:80px}.prose h3{font-size:1.05rem}
+  .prose ul,.prose ol,.toc ol{padding-left:1.3em}
+  .toc{padding:10px 14px}.toc a{display:inline-block;padding:4px 0}
+  .callout{padding:10px 12px}
+  .figure-ph{padding:12px}
+  table{font-size:.85rem}th,td{padding:6px 8px}
+  .cat-head{padding:16px}
+  .cat-head h1{font-size:1.4rem}
+  .post-card{padding:12px}.post-card__title{min-width:0;flex-basis:100%}
+  .steps ol{padding-top:12px}
+  .steps__item a{min-height:40px;display:flex;align-items:center}
+  .crumbs ol{font-size:.8rem}
+  .pager__link{min-height:44px}
+  .site-footer a{display:inline-block;padding:6px 0}
+  .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
+  .form button{min-height:44px}
+}
+
+/* ===== 公開用コピーで追加 ===== */
+/* 図の差し替え枠（FIGURE_MODE="frame" のときだけ表示。"hidden" では非表示） */
+.figure-slot{border:1px solid var(--line);border-radius:10px;min-height:120px;margin:1.2em 0;background:#fbfcfe;display:flex;align-items:center;justify-content:center}
+.figure-slot[hidden]{display:none}
+.figure-slot__label{color:var(--muted);font-size:.8rem}
+.tag--soon{border-color:var(--line);color:var(--muted)}
+.tag--pub{border-color:var(--step2);color:var(--step2)}
+.draft-note{background:#fffbea;border:1px solid #f6e05e;border-radius:8px;padding:10px 14px;font-size:.88rem;margin:0 0 1.2em}
+.footer-copy{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#c3cfdf}
+.contact-mail{font-size:1.05rem;font-weight:700}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small></small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
+  </div>
+  <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
+</header>
+<main class="wrap main">
+<nav class="crumbs" aria-label="パンくずリスト"><ol><li><a href="index.html">トップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li aria-current="page">FXの1pipsとは？値動きの数え方とFXのスプレッドの基本</li></ol></nav>
+<nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item is-current"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
+<article class="article">
+  <header class="article__head">
+    <p class="article__meta"><span class="article__id">A-05</span></p>
+    <h1>FXの1pipsとは？値動きの数え方とFXのスプレッドの基本</h1>
+    <p class="progress">STEP1 入門：全8本中 6本目</p>
+    <p class="article__lead small">公開日：2026年11月5日</p>
+  </header>
+  <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">pipsとは？FXの値動きを数える共通の単位</a></li><li><a href="#sec-6">1pips動くと、損益はどう変わる？</a></li><li><a href="#sec-9">FXのスプレッドとは？「売値」と「買値」の差</a></li><li><a href="#sec-13">FXのスプレッドはpipsで表される：「狭い」「広い」の意味</a></li><li><a href="#sec-16">よくある疑問</a></li><li><a href="#sec-17">まとめ：次に読む記事</a></li></ol></aside>
+  <div class="prose">
+<p>「FXの記事でよく見る『pips』って何？」「取引画面に値段が2つ並んでいるのはなぜ？」という疑問に答える記事です。</p>
+<p>結論からお伝えすると、<strong>pipsはレートの値動きを数える共通の単位で、米ドル/円など円を含む通貨ペアでは、多くの場合1pips＝0.01円（1銭）です。また、取引画面の『売り』の値段と『買い』の値段の差がFXのスプレッドで、取引した瞬間にかかる実質的な取引コストになります</strong>。</p>
+<p>この記事で分かること：</p>
+<ol>
+<li>pipsとは何か、その数え方</li>
+<li>1pipsの値動きで損益がどう変わるかの考え方</li>
+<li>FXのスプレッドが実質的なコストになる理由と、その計算</li>
+</ol>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスクについて</strong><br />
+FXは元本保証のない取引です。為替レートが予想と逆に動けば損失が出て、相場の急変時などには、預けたお金（証拠金）を上回る損失が出ることもあります。また、取引のたびにFXのスプレッドなどのコストがかかります。くわしくは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」で解説しています。</p>
+</blockquote>
+<h2 id="sec-1">pipsとは？FXの値動きを数える共通の単位</h2>
+<h3 id="sec-2">pips＝「レートがどれだけ動いたか」を表す単位</h3>
+<p>pips（ピップス）は、為替レートの値動きの大きさを表すときに使う単位です。単数形はpip（ピップ）ですが、この記事では「1pips」のように数字＋pipsで表します。</p>
+<p>通貨ペアによって値段の単位は円やドルとバラバラなので、共通の「ものさし」としてpipsで数えると、値動きの大きさやFXのスプレッドの幅をそろえて表せます。「50pips上がった」のように使われます。</p>
+<h3 id="sec-3">円を含む通貨ペアでは、多くの場合「1pips＝0.01円（1銭）」</h3>
+<p>米ドル/円やユーロ/円など、円を含む通貨ペアでは、<strong>多くの場合、小数第2位の1銭（0.01円）を1pips</strong>として数えます。</p>
+<ul>
+<li>1円＝100銭なので、<strong>1円の値動き＝100pips</strong>です</li>
+<li>取引画面では、小数第3位（0.001円＝0.1銭）まで表示されることも多く、その場合の最後の1けたは<strong>0.1pips</strong>にあたります</li>
+</ul>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong><br />
+数字はすべて説明用の仮のもので、実際の相場・取引条件ではありません。</p>
+<ul>
+<li>150.00円 → 150.01円：0.01円の値動き＝<strong>1pips</strong>（1銭）</li>
+<li>150.00円 → 150.50円：0.50円の値動き＝<strong>50pips</strong>（50銭）</li>
+<li>150.00円 → 151.00円：1円の値動き＝<strong>100pips</strong></li>
+<li>150円 → 155円（A-01・A-04で使った例）：5円の値動き＝<strong>500pips</strong></li>
+</ul>
+</blockquote>
+<p>数え方のコツは、「<strong>値動き（円）÷0.01円＝pips</strong>」です。反対に「pips×0.01円＝値動き（円）」と逆算することもできます。</p>
+<h3 id="sec-4">円を含まない通貨ペアでは、多くの場合「小数第4位」</h3>
+<p>ユーロ/米ドルのような外貨どうしの通貨ペアでは、<strong>多くの場合、小数第4位（0.0001）を1pips</strong>として数えます。たとえば、1.0850 → 1.0851の動きなら1pipsです（説明用の例で、実際の相場ではありません）。</p>
+<h3 id="sec-5">1pipsの扱いは、各社の説明で確認を</h3>
+<p>ここで紹介した数え方は一般的なもので、業者によっては表示けた数や1pipsの扱いが異なる場合があります。取引を考えるときは、各社の契約締結前交付書面などで確認しましょう。</p>
+<h2 id="sec-6">1pips動くと、損益はどう変わる？</h2>
+<h3 id="sec-7">損益は「動いたpips」×「取引する量」で決まる</h3>
+<p>「<a href="article-a04.html">通貨ペアと『買い』『売り』：どちらからでも取引できる理由</a>」で見たとおり、『買い』はレートが上がると利益、『売り』は下がると利益になり、どちらも予想と逆に動けば損失になります。</p>
+<p>損益の大きさは、<strong>動いたpipsの数</strong>と<strong>取引する量</strong>の両方で決まります。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong><br />
+数字はすべて説明用の仮のもので、実際の相場・取引条件ではありません。FXのスプレッド・手数料・スワップポイントは考えず、レバレッジもかけない100ドル分で計算しています。</p>
+<ul>
+<li>米ドル/円で100ドル分なら、1pips（0.01円）の値動きは 0.01円×100ドル＝<strong>1円</strong>の損益</li>
+<li>50pips動けば <strong>50円</strong></li>
+<li>500pips（150円 → 155円）動けば <strong>500円</strong>（A-04の±500円と同じ）</li>
+</ul>
+</blockquote>
+<p>同じ50pipsでも、取引する量が10倍なら、損益も10倍になります。取引数量の単位（通貨・FXのロット）や、1pipsあたりの損益のくわしい計算は「FXのロットとは？取引数量と1pipsあたりの損益計算」（近日公開）で解説する予定です。</p>
+<h3 id="sec-8">「pipsで見ると小さく見える」に注意</h3>
+<p>「たった50pips」でも、取引する量が大きければ損失も大きくなります。FXでは預けたお金より大きな金額を取引できる（レバレッジ）ため、同じpipsの値動きでも損益が大きくなることがあります。この仕組みは「<a href="article-a03.html">ロスカットとは？</a>」でくわしく確認できます。</p>
+<h2 id="sec-9">FXのスプレッドとは？「売値」と「買値」の差</h2>
+<h3 id="sec-10">取引画面には値段が2つある</h3>
+<p>前の記事では、わかりやすくするため値段を1つとして計算しましたが、実際のFXの取引画面には、「<strong>売値（Bid／ビッド）</strong>」と「<strong>買値（Ask／アスク。オファーとも）</strong>」の2つの値段が並んで表示されます。</p>
+<ul>
+<li>『買い』は、高いほうの値段（買値）で取引が成立します</li>
+<li>『売り』は、低いほうの値段（売値）で取引が成立します</li>
+</ul>
+<p>空港などの両替で、「円をドルに替えるとき」と「ドルを円に戻すとき」の値段が違うのと同じような考え方です。そして、<strong>この売値と買値の差がFXのスプレッド</strong>です。</p>
+<h3 id="sec-11">FXのスプレッドが「実質的なコスト」になる理由</h3>
+<p>取引手数料が無料でも、売値と買値に差がある分だけ、<strong>取引した瞬間は少しマイナスから始まります</strong>。これが、FXのスプレッドが実質的な取引コストといわれる理由です。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong><br />
+数字はすべて説明用の仮のもので、実際の相場・取引条件ではありません。手数料・スワップポイントは考えず、レバレッジもかけない100ドル分で計算しています。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>米ドル/円</th>
+<th>売値（Bid）</th>
+<th>買値（Ask）</th>
+<th>FXのスプレッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明用の例</td>
+<td>150.000円</td>
+<td>150.005円</td>
+<td>0.005円＝0.5銭＝<strong>0.5pips</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>『買い』：買値150.005円で取引し、すぐに売値150.000円で決済すると、(150.000−150.005)×100ドル＝<strong>−0.5円</strong></li>
+<li>『売り』：売値150.000円で取引し、すぐに買値150.005円で決済すると、こちらも <strong>−0.5円</strong></li>
+<li>損益がゼロに戻るには、『買い』なら売値が150.005円まで（<strong>0.5pips</strong>）上がる必要があります</li>
+</ul>
+</blockquote>
+<p>計算式にすると、<strong>FXのスプレッドによるコスト＝FXのスプレッド（円）×取引する量</strong>です。100ドル分なら0.5円、1万ドル分なら0.005円×1万＝<strong>50円</strong>になります（「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」で見た例と同じです）。</p>
+<p>取引する量が大きいほど、また回数が多いほど、コストは積み重なります。たとえば、1万ドル分を10回取引すれば、50円×10＝<strong>500円</strong>です（説明用の例）。</p>
+<h3 id="sec-12">取引手数料とは別もの</h3>
+<p>取引手数料は、取引の際に業者に支払うもので、FXのスプレッドとは別のものです。手数料が無料の場合でも、FXのスプレッドはかかります。また、手数料をFXのスプレッドの中に組み込む形で受け取る方法（マークアップ手数料）もあります。</p>
+<h2 id="sec-13">FXのスプレッドはpipsで表される：「狭い」「広い」の意味</h2>
+<h3 id="sec-14">「FXのスプレッドが○pips（○銭）」の読み方</h3>
+<p>FXのスプレッドは、円を含む通貨ペアでは「銭」、外貨どうしのペアでは「pips」で表示されることが多いです。円を含むペアで1pips＝1銭の場合、「0.5銭」と「0.5pips」は同じ幅を表しています。</p>
+<p>差が小さいことを「<strong>狭い</strong>」、大きいことを「<strong>広い</strong>」といいます。狭いほど、1回の取引にかかるコストは小さくなります。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong><br />
+数字は計算のための仮のもので、実際の相場・取引条件ではありません。100ドル分で計算すると、FXのスプレッドが0.5pips（0.5銭）ならコストは<strong>0.5円</strong>、2pips（2銭）なら<strong>2円</strong>で、4倍の差になります。</p>
+</blockquote>
+<h3 id="sec-15">FXのスプレッドは業者・通貨ペア・時間帯で変わる</h3>
+<p>FXのスプレッドの幅は、業者ごと・通貨ペアごとに異なり、<strong>いつも一定とは限りません</strong>。業者が示すFXのスプレッドも、いつもその幅で取引できることを約束するものではありません。特に、次のような場面では広がりやすいとされています。</p>
+<ul>
+<li>早朝や、主要国の祝日・クリスマス・年末年始など、取引が少ない時期</li>
+<li>重要な経済指標の発表前後や、大きなニュースで相場が急変したとき</li>
+<li>取引量の少ない通貨（新興国通貨など）</li>
+</ul>
+<p>業者を選ぶ前に確認したいポイントは、「<a href="article-a07.html">FX初心者がまずやること：取引前の準備と金融庁登録業者の確認</a>」で解説しています。</p>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスク注意</strong><br />
+FXのスプレッドは、相場の急変時や取引の少ない時間帯などに大きく広がることがあり、思った値段で取引できない場合もあります。取引の量や回数が多いほどコストも積み重なります。実際の取引条件は業者によって異なるため、取引を考える前に各社の説明書面で必ず確認してください。</p>
+</blockquote>
+<h2 id="sec-16">よくある疑問</h2>
+<p><strong>Q1. FXのスプレッドが狭ければ、利益が出やすいのですか？</strong>
+狭いと1回の取引にかかるコストが小さくなる、というだけです。利益が出るかどうかは為替レートの動き次第で、予想と逆に動けば、FXのスプレッドが狭くても損失は出ます。</p>
+<p><strong>Q2. 『売り』でもFXのスプレッドはかかりますか？</strong>
+かかります。『売り』は売値で取引し、決済は買値で行うため、『買い』と同じだけ、差の分がコストになります。</p>
+<h2 id="sec-17">まとめ：次に読む記事</h2>
+<ul>
+<li>pipsは値動きを数える共通の単位。円を含む通貨ペアでは<strong>多くの場合1pips＝0.01円（1銭）</strong>で、1円の値動きは100pips</li>
+<li>損益は「動いたpips」×「取引する量」で決まり、同じpipsでも量が大きいほど損益も大きくなる</li>
+<li>FXのスプレッドは売値と買値の差。<strong>取引した瞬間は少しマイナスから始まる、実質的な取引コスト</strong></li>
+<li>FXのスプレッドはpips（銭）で表され、差が小さいと「狭い」、大きいと「広い」。業者・通貨ペア・時間帯で異なり、急変時などは広がることがある</li>
+<li>取引の量や回数が多いほどコストは積み重なり、相場の急変時などには<strong>預けたお金を上回る損失</strong>が出ることもある</li>
+</ul>
+<p>次は、通貨の金利差から生まれる「スワップポイント」を学びましょう。『買い』『売り』の向きによって、受け取りにも支払いにもなる点がポイントです。</p>
+<p>👉 <strong>次に読む記事：<a href="article-a06.html">スワップポイントとは？</a></strong></p>
+<p>👈 <strong>前の記事：<a href="article-a04.html">通貨ペアと『買い』『売り』：どちらからでも取引できる理由</a></strong>
+『買い』と『売り』で、レートがどちらに動くと利益・損失になるかを確認したい方はこちらへ。</p>
+<p>あわせて読みたい：「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」（FXのスプレッドを含む、損失が出る3つのパターン）</p>
+<hr />
+<p><strong>【免責事項】</strong>
+本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示であり、実際の相場ではありません。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。</p>
+<p><strong>参考：</strong></p>
+<ul>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年11月5日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/learning/?p=23" target="_blank" rel="noopener">スプレッド、手数料について</a>」（FFAJの学ぼう！FX。参照日：2026年11月5日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/learning/?p=7" target="_blank" rel="noopener">為替相場とは</a>」（FFAJの学ぼう！FX。参照日：2026年11月5日）</li>
+</ul>
+  </div>
+  <nav class="pager" aria-label="前後の記事"><a class="pager__link" href="article-a04.html"><small>← 前の記事</small>A-04 通貨ペアと『買い』『売り』：どちらからでも取引できる理由</a><a class="pager__link" href="article-a06.html"><small>次へ →</small>A-06 スワップポイントとは？</a></nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div><p class="footer-title">はじめてのFX学習ノート</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログです。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
+    <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
+  </div>
+  <p class="wrap footer-copy">© 2026 はじめてのFX学習ノート　当サイトは一般的な情報提供を目的としており、投資助言ではありません。詳しくは<a href="disclaimer.html">免責事項</a>をご覧ください。</p>
+</footer>
+<script>
+/* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */
+(function () {
+  var html = document.documentElement;
+  html.classList.add('js');
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('gnav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    nav.classList.toggle('is-open', open);
+  }
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false); btn.focus();
+    }
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  var mq = window.matchMedia('(min-width: 761px)');
+  var onChange = function () { if (mq.matches) setOpen(false); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+})();
+</script>
+</body>
+</html>

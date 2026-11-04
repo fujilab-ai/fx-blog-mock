@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味｜はじめてのFX学習ノート（仮称）【見本】</title>
-<meta name="description" content="ロスカットとは、FXで含み損が一定水準に達したとき業者が強制的に決済する仕組みです。証拠金・レバレッジ・証拠金維持率の関係と「個人は最大25倍」の意味を計算例で解説。急変時に証拠金以上の損失が出るリスクや、ロスカットされにくくする考え方も紹介します。（125字）">
+<title>ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味｜はじめてのFX学習ノート</title>
+<meta name="description" content="ロスカットとは、FXで含み損が一定水準に達したとき業者が強制的に決済する仕組みです。証拠金・レバレッジ・証拠金維持率の関係と「個人は最大25倍」の意味を計算例で解説。急変時に証拠金以上の損失が出るリスクや、ロスカットされにくくする考え方も紹介します。">
 <style>
 :root{
   --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
@@ -167,14 +166,23 @@ code{overflow-wrap:anywhere;word-break:break-word}
   .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
   .form button{min-height:44px}
 }
+
+/* ===== 公開用コピーで追加 ===== */
+/* 図の差し替え枠（FIGURE_MODE="frame" のときだけ表示。"hidden" では非表示） */
+.figure-slot{border:1px solid var(--line);border-radius:10px;min-height:120px;margin:1.2em 0;background:#fbfcfe;display:flex;align-items:center;justify-content:center}
+.figure-slot[hidden]{display:none}
+.figure-slot__label{color:var(--muted);font-size:.8rem}
+.tag--soon{border-color:var(--line);color:var(--muted)}
+.tag--pub{border-color:var(--step2);color:var(--step2)}
+.draft-note{background:#fffbea;border:1px solid #f6e05e;border-radius:8px;padding:10px 14px;font-size:.88rem;margin:0 0 1.2em}
+.footer-copy{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#c3cfdf}
+.contact-mail{font-size:1.05rem;font-weight:700}
 </style>
 </head>
 <body>
-<div class="mock-banner" role="note">見本（モック）・非公開 ― 公開前の完成イメージです。広告・アフィリエイトリンクは入っていません。</div>
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small>（仮称）</small></span></a>
-    <span class="badge-mock">見本（モック）・非公開</span>
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small></small></span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
   </div>
   <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
@@ -184,10 +192,10 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item is-current"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
 <article class="article">
   <header class="article__head">
-    <p class="article__meta"><span class="tag tag--draft">下書き・見本掲載</span><span class="article__id">A-03</span></p>
+    <p class="article__meta"><span class="article__id">A-03</span></p>
     <h1>ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</h1>
-    <p class="progress">STEP1 入門：全7本中 3本目</p>
-    <p class="article__lead small">最終確認：2026年10月25日（編集長レビュー済み原稿）｜本ページは見本です。リンク先が「準備中」の記事はまだありません。</p>
+    <p class="progress">STEP1 入門：全8本中 4本目</p>
+    <p class="article__lead small">公開日：2026年11月5日</p>
   </header>
   <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">結論：ロスカットとは？</a></li><li><a href="#sec-2">前提：証拠金とレバレッジ</a></li><li><a href="#sec-5">証拠金維持率とロスカットの関係</a></li><li><a href="#sec-7">ロスカットは万能ではない</a></li><li><a href="#sec-8">ロスカットされにくくするための考え方</a></li><li><a href="#sec-9">まとめ：次に読む記事</a></li></ol></aside>
   <div class="prose">
@@ -229,7 +237,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li>業者は、新しく取引するときと、営業日ごとに1日1回以上決めた時刻に、取引額の4％以上の証拠金があるかを確認する</li>
 <li><strong>法人</strong>の店頭FX取引は、個人とは別のルールで、2017年2月から通貨ペアごとに過去の相場をもとに計算される率以上の証拠金が必要</li>
 </ul>
-<p>なお、海外の無登録業者の中には、日本の規制をはるかに上回る高レバレッジを宣伝しているところがあります。金融庁はこうした無登録業者による勧誘に注意を呼びかけています（くわしくは<a href="article-a02.html">A-02</a>・<span class="pending" title="A-07は準備中の記事です">A-07<small>（準備中）</small></span>）。</p>
+<p>なお、海外の無登録業者の中には、日本の規制をはるかに上回る高レバレッジを宣伝しているところがあります。金融庁はこうした無登録業者による勧誘に注意を呼びかけています（くわしくは<a href="article-a02.html">A-02</a>・A-07（近日公開））。</p>
 <h3 id="sec-4">計算例</h3>
 <blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場や業者の取引条件ではありません）  </p>
 <p>1ドル＝150円のときに、1万ドルを買う場合</p>
@@ -240,10 +248,8 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li>為替レートが<strong>1円動くと、損益は1円×1万ドル＝1万円</strong></li>
 </ul>
 </blockquote>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>証拠金と取引額のブロック図。下に小さな「証拠金6万円」のブロックを置き、その上に25個分の大きさの「取引額150万円」のブロックを積み上げて、「25倍」と表示する。「数値は説明用の例示」と明記</div>
-
 <p>「6万円で150万円分の取引ができる」と聞くと魅力的に感じるかもしれません。しかし、1円の値動きで1万円の損益が出るということは、<strong>6万円の証拠金に対して、6円逆に動けば証拠金と同じ6万円の損失になる</strong>ということです。実際には、口座に必要証拠金ちょうどの6万円しか入れていなければ、わずかな逆行でも証拠金維持率が下がり、6円動くよりずっと前にロスカットの対象になります。</p>
-<p>値動きの単位（pips）や取引数量ごとの損益計算は、「<span class="pending" title="A-05は準備中の記事です">FXの1pipsとは？<small>（準備中）</small></span>」「<span class="pending" title="B-04は準備中の記事です">FXのロットとは？<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<p>値動きの単位（pips）や取引数量ごとの損益計算は、「FXの1pipsとは？」（近日公開）「FXのロットとは？」（近日公開）でくわしく解説しています。</p>
 <h2 id="sec-5">証拠金維持率とロスカットの関係</h2>
 <p>ロスカットがいつ起きるかを判断するときに使われるのが、「<strong>証拠金維持率</strong>」です。必要な証拠金に対して、口座にどれくらい余裕があるかを示す割合です。</p>
 <blockquote>
@@ -288,9 +294,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 </table></div>
 <p>※実際の必要証拠金の計算方法（その時点のレートで計算し直すかどうか等）は業者によって異なります。</p>
 </blockquote>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>証拠金維持率のメーター図。左から右へ維持率が下がっていくメーターを描き、含み損が増えるにつれて針が「業者のロスカット水準」のラインに近づく様子を示す。ロスカット水準のラインには具体的な％は書かず、「業者ごとに異なる」と注記する</div>
-
-<p>自分の資金と取引数量から、ロスカットまでの値幅を計算する方法は「<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？<small>（準備中）</small></span>」で解説しています。</p>
+<p>自分の資金と取引数量から、ロスカットまでの値幅を計算する方法は「証拠金維持率の目安は？」（近日公開）で解説しています。</p>
 <h3 id="sec-6">ロスカット水準は業者ごとに違う</h3>
 <p>「証拠金維持率が何％になったらロスカットされるか」は、<strong>業者によって異なります</strong>。同じ業者でも、口座の種類やコースによって違う場合があります。</p>
 <p>取引を始める前に、次の書面やページで必ず確認しましょう。</p>
@@ -298,7 +302,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li>各社の<strong>契約締結前交付書面</strong>（取引説明書）</li>
 <li>各社のウェブサイトの取引ルール・ロスカットの説明ページ</li>
 </ul>
-<p>あわせて、ロスカットとは別に「証拠金維持率が一定を下回ったときに追加の入金を求める仕組み（いわゆる追証〈おいしょう〉）」やアラート（通知）の有無・条件も、業者ごとに異なるので確認しておきましょう。業者を選ぶときに確認したいポイントは「<span class="pending" title="A-07は準備中の記事です">FX初心者がまずやること<small>（準備中）</small></span>」でまとめています。</p>
+<p>あわせて、ロスカットとは別に「証拠金維持率が一定を下回ったときに追加の入金を求める仕組み（いわゆる追証〈おいしょう〉）」やアラート（通知）の有無・条件も、業者ごとに異なるので確認しておきましょう。業者を選ぶときに確認したいポイントは「FX初心者がまずやること」（近日公開）でまとめています。</p>
 <h2 id="sec-7">ロスカットは万能ではない</h2>
 <blockquote class="callout callout--warn"><p>⚠️ <strong>リスク注意</strong><br />
 金融庁は「相場が急激に変動したときは、ロスカットルールが適用されても、証拠金の額を上回る損失が生じることがある」と説明しています。</p>
@@ -310,7 +314,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li><strong>取引が少ない時間帯</strong>：FXのスプレッドが広がり、思った値段で取引しにくくなる</li>
 </ul>
 <p>こうした場面では、ロスカットの水準を飛び越えた値段で決済され、<strong>口座残高がマイナスになる（預けた証拠金を上回る損失が出る）</strong>ことがあります。その場合、<strong>不足分は業者に支払う（入金する）義務があり</strong>、ロスカットされたからといって帳消しにはなりません。入金の期限や手続きは業者ごとに定められているため、契約締結前交付書面などで確認しておきましょう。</p>
-<p>具体的な流れは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」の例で、急変時のリスクは「<span class="pending" title="D-04は準備中の記事です">相場急変・窓開け・スリッページのリスク<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<p>具体的な流れは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」の例で、急変時のリスクは「相場急変・窓開け・スリッページのリスク」（近日公開）でくわしく解説しています。</p>
 <h2 id="sec-8">ロスカットされにくくするための考え方</h2>
 <blockquote class="callout callout--warn"><p>⚠️ <strong>「この維持率なら安全」という数字はありません</strong><br />
 相場がどれだけ動くかは誰にも分からないため、一律に安全といえる証拠金維持率やレバレッジはありません。ここでは判断の考え方を紹介します。</p>
@@ -358,13 +362,11 @@ code{overflow-wrap:anywhere;word-break:break-word}
 </table></div>
 <p>※上限いっぱい（25倍）で取引すると、少しでも逆に動けば必要証拠金を下回り、ロスカットや追加入金の対象になりやすくなります。</p>
 </blockquote>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>実効レバレッジ別の比較表。上の表をもとに、同じ「1円の値動き」に対して、口座資金に対する損失の割合が実効レバレッジによってどう変わるかを横棒グラフで並べる。「数値は説明用の例示」と明記</div>
-
 <p><strong>② 取引額を抑える</strong></p>
-<p>同じ資金でも、取引数量を少なくすれば実効レバレッジは下がり、証拠金維持率に余裕ができます。自分に合った取引数量の考え方は「<span class="pending" title="C-01は準備中の記事です">FXの資金管理とFXのロット計算<small>（準備中）</small></span>」で解説しています。</p>
+<p>同じ資金でも、取引数量を少なくすれば実効レバレッジは下がり、証拠金維持率に余裕ができます。自分に合った取引数量の考え方は「FXの資金管理とFXのロット計算」（近日公開）で解説しています。</p>
 <p><strong>③ 自分で逆指値の損切りを置く</strong></p>
-<p>ロスカットは「業者が決めた水準」での強制的な決済です。それより前に、<strong>自分で決めた位置で損切りする注文（逆指値注文）</strong>を入れておけば、ロスカットに頼らずに損失をコントロールしやすくなります。ただし、逆指値注文も相場の急変時には指定した値段より不利な値段で約定することがあります。注文方法は「<span class="pending" title="B-02は準備中の記事です">注文方法の基本：成行・指値・逆指値<small>（準備中）</small></span>」、損切りの位置の決め方は「<span class="pending" title="C-02は準備中の記事です">FXの損切りの目安は？<small>（準備中）</small></span>」をご覧ください。</p>
-<p>証拠金維持率をどれくらい保てばよいかは、取引する通貨ペアや期間、自分の資金によって変わります。計算方法は「<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？<small>（準備中）</small></span>」で解説しています。</p>
+<p>ロスカットは「業者が決めた水準」での強制的な決済です。それより前に、<strong>自分で決めた位置で損切りする注文（逆指値注文）</strong>を入れておけば、ロスカットに頼らずに損失をコントロールしやすくなります。ただし、逆指値注文も相場の急変時には指定した値段より不利な値段で約定することがあります。注文方法は「注文方法の基本：成行・指値・逆指値」（近日公開）、損切りの位置の決め方は「FXの損切りの目安は？」（近日公開）をご覧ください。</p>
+<p>証拠金維持率をどれくらい保てばよいかは、取引する通貨ペアや期間、自分の資金によって変わります。計算方法は「証拠金維持率の目安は？」（近日公開）で解説しています。</p>
 <h2 id="sec-9">まとめ：次に読む記事</h2>
 <p>この記事で出てきた用語を振り返りましょう。</p>
 <div class="table-wrap"><table>
@@ -403,30 +405,31 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li>相場の急変時には、ロスカットがあっても<strong>証拠金を上回る損失</strong>が出ることがあります</li>
 </ul>
 <p>次は、この記事で学んだ証拠金維持率を自分で計算して、ロスカットまでの余裕を確かめてみましょう。そのあとで、FXの「買い」「売り」の考え方に進むのがおすすめです。</p>
-<p>👉 <strong>次に読む記事：<span class="pending" title="B-01は準備中の記事です">証拠金維持率の目安は？計算方法とロスカットまでの値幅シミュレーション<small>（準備中）</small></span></strong>
-👉 <strong>その次に：<span class="pending" title="A-04は準備中の記事です">通貨ペアと「買い」「売り」：どちらからでも取引できる理由<small>（準備中）</small></span></strong>
-👉 <strong>取引前の準備を確認したい方へ：<span class="pending" title="A-07は準備中の記事です">FX初心者がまずやること：取引前の準備と金融庁登録業者の確認<small>（準備中）</small></span></strong></p>
+<p>👉 <strong>次に読む記事：証拠金維持率の目安は？計算方法とロスカットまでの値幅シミュレーション（近日公開）</strong>
+👉 <strong>その次に：通貨ペアと『買い』『売り』：どちらからでも取引できる理由（近日公開）</strong>
+👉 <strong>取引前の準備を確認したい方へ：FX初心者がまずやること：取引前の準備と金融庁登録業者の確認（近日公開）</strong></p>
+<p>上の3本は近日公開です。公開までは「<a href="roadmap.html">FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</a>」で全体の流れを確認できます。</p>
 <hr />
 <p><strong>【免責事項】</strong>
 本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示です。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。ロスカットは損失の拡大を抑えるための仕組みであり、損失の発生や証拠金を上回る損失を防ぐことを保証するものではありません。</p>
 <p><strong>参考：</strong></p>
 <ul>
-<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年10月25日）</li>
-<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/customers/" target="_blank" rel="noopener">個人顧客を相手方とするFX取引に係る証拠金規制</a>」（参照日：2026年10月25日）</li>
-<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/" target="_blank" rel="noopener">FX取引の規制について</a>」（参照日：2026年10月25日）</li>
-<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年10月25日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年11月5日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/customers/" target="_blank" rel="noopener">個人顧客を相手方とするFX取引に係る証拠金規制</a>」（参照日：2026年11月5日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/" target="_blank" rel="noopener">FX取引の規制について</a>」（参照日：2026年11月5日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年11月5日）</li>
 </ul>
   </div>
-  <nav class="pager" aria-label="入門の前後の記事"><a class="pager__link" href="article-a02.html"><small>← 前の記事</small>A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a><span class="pager__link is-pending"><small>次の記事 →</small>A-04 通貨ペアと「買い」「売り」：どちらからでも取引できる理由（準備中）</span></nav>
+  <nav class="pager" aria-label="前後の記事"><a class="pager__link" href="article-a02.html"><small>← 前の記事</small>A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a><a class="pager__link" href="roadmap.html"><small>次へ →</small>学習ロードマップに戻る</a></nav>
 </article>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div><p class="footer-title">はじめてのFX学習ノート（仮称）</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログ（見本）。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">はじめてのFX学習ノート</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログです。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
     <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
     <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
   </div>
-  <p class="wrap footer-mock">見本（モック）・非公開｜作成日 2026年10月26日｜契約・ドメイン取得・公開はしていません</p>
+  <p class="wrap footer-copy">© 2026 はじめてのFX学習ノート　当サイトは一般的な情報提供を目的としており、投資助言ではありません。詳しくは<a href="disclaimer.html">免責事項</a>をご覧ください。</p>
 </footer>
 <script>
 /* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */

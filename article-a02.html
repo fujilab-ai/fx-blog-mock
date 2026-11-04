@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」｜はじめてのFX学習ノート（仮称）【見本】</title>
-<meta name="description" content="FXは元本保証のない取引で、元本割れだけでなく、相場急変時にはロスカットがあっても証拠金以上の損失が出ることがあります。損失が出る3つのパターン、口座残高がマイナスになる仕組み、レバレッジの影響、取引前に決めたいことを解説します。（115字）">
+<title>始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」｜はじめてのFX学習ノート</title>
+<meta name="description" content="FXは元本保証のない取引で、元本割れだけでなく、相場急変時にはロスカットがあっても証拠金以上の損失が出ることがあります。損失が出る3つのパターン、口座残高がマイナスになる仕組み、レバレッジの影響、取引前に決めたいことを解説します。">
 <style>
 :root{
   --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
@@ -167,14 +166,23 @@ code{overflow-wrap:anywhere;word-break:break-word}
   .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
   .form button{min-height:44px}
 }
+
+/* ===== 公開用コピーで追加 ===== */
+/* 図の差し替え枠（FIGURE_MODE="frame" のときだけ表示。"hidden" では非表示） */
+.figure-slot{border:1px solid var(--line);border-radius:10px;min-height:120px;margin:1.2em 0;background:#fbfcfe;display:flex;align-items:center;justify-content:center}
+.figure-slot[hidden]{display:none}
+.figure-slot__label{color:var(--muted);font-size:.8rem}
+.tag--soon{border-color:var(--line);color:var(--muted)}
+.tag--pub{border-color:var(--step2);color:var(--step2)}
+.draft-note{background:#fffbea;border:1px solid #f6e05e;border-radius:8px;padding:10px 14px;font-size:.88rem;margin:0 0 1.2em}
+.footer-copy{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#c3cfdf}
+.contact-mail{font-size:1.05rem;font-weight:700}
 </style>
 </head>
 <body>
-<div class="mock-banner" role="note">見本（モック）・非公開 ― 公開前の完成イメージです。広告・アフィリエイトリンクは入っていません。</div>
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small>（仮称）</small></span></a>
-    <span class="badge-mock">見本（モック）・非公開</span>
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small></small></span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
   </div>
   <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
@@ -184,10 +192,10 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item is-current"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
 <article class="article">
   <header class="article__head">
-    <p class="article__meta"><span class="tag tag--draft">下書き・見本掲載</span><span class="article__id">A-02</span></p>
+    <p class="article__meta"><span class="article__id">A-02</span></p>
     <h1>始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</h1>
-    <p class="progress">STEP1 入門：全7本中 2本目</p>
-    <p class="article__lead small">最終確認：2026年10月25日（編集長レビュー済み原稿）｜本ページは見本です。リンク先が「準備中」の記事はまだありません。</p>
+    <p class="progress">STEP1 入門：全8本中 3本目</p>
+    <p class="article__lead small">公開日：2026年11月5日</p>
   </header>
   <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">結論：FXは元本保証のない取引</a></li><li><a href="#sec-2">損失が出る3つの典型パターン</a></li><li><a href="#sec-4">レバレッジは損失も大きくする</a></li><li><a href="#sec-5">初心者が損失を大きくしやすい行動</a></li><li><a href="#sec-6">無登録業者・「必ず儲かる」勧誘に注意</a></li><li><a href="#sec-7">それでも始めるなら：取引前の約束</a></li><li><a href="#sec-8">まとめ：次に読む記事</a></li></ol></aside>
   <div class="prose">
@@ -212,19 +220,17 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <p>FXの全体像や学ぶ順番は「<a href="roadmap.html">FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</a>」で紹介しています。</p>
 <h2 id="sec-2">損失が出る3つの典型パターン</h2>
 <p>FXで損失が出る主な原因は、大きく分けて次の3つです。</p>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>損失が出る3パターンの図。3つの箱を横に並べ、①「予想と逆に動く（相場変動）」②「FXのスプレッド（取引コスト）」③「スワップポイントの支払い」と書き、それぞれに矢印で「口座のお金が減る」とつなぐ</div>
-
 <p><strong>① 予想と逆に動く（相場変動）</strong></p>
-<p>もっとも基本的な損失の原因です。たとえば「米ドルが上がる（円安になる）」と予想して米ドルを買ったのに、実際には米ドルが下がる（円高になる）と、その分が損失になります。反対に、「下がる」と予想して売った場合は、上がると損失になります。買いと売りの考え方は「<span class="pending" title="A-04は準備中の記事です">通貨ペアと「買い」「売り」<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<p>もっとも基本的な損失の原因です。たとえば「米ドルが上がる（円安になる）」と予想して米ドルを買ったのに、実際には米ドルが下がる（円高になる）と、その分が損失になります。反対に、「下がる」と予想して売った場合は、上がると損失になります。買いと売りの考え方は「通貨ペアと『買い』『売り』」（近日公開）でくわしく解説しています。</p>
 <p><strong>② FXのスプレッド（取引コスト）</strong></p>
 <p>FXでは、買うときの値段と売るときの値段にわずかな差があります。これを「スプレッド」といいます。</p>
 <blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場や業者の取引条件ではありません）<br />
 仮に、米ドル/円のスプレッドが0.5銭（0.005円）だったとします。1万ドルを取引すると、0.005円×1万ドル＝<strong>50円</strong>が、取引した瞬間のコストになります。つまり、取引を始めた時点では少しマイナスからのスタートになります。
 ※FXのスプレッドの幅は業者や通貨ペア、時間帯によって異なります。上の数字は計算方法を説明するための仮の数字です。</p>
 </blockquote>
-<p>スプレッドは、経済指標の発表時や取引が少ない時間帯などに広がることがあります。取引回数が多いほどコストも積み重なります。くわしくは「<span class="pending" title="A-05は準備中の記事です">FXの1pipsとは？値動きの数え方とFXのスプレッドの基本<small>（準備中）</small></span>」をご覧ください。</p>
+<p>スプレッドは、経済指標の発表時や取引が少ない時間帯などに広がることがあります。取引回数が多いほどコストも積み重なります。くわしくは「FXの1pipsとは？値動きの数え方とFXのスプレッドの基本」（近日公開）をご覧ください。</p>
 <p><strong>③ スワップポイントの支払い</strong></p>
-<p>スワップポイントは、2つの通貨の金利差から生まれる調整額です。「受け取れるもの」というイメージを持たれがちですが、<strong>取引の方向や通貨ペアによっては支払いになります</strong>。また、金利の状況によって日々変わり、受け取りから支払いに変わることもあります。くわしくは「<span class="pending" title="A-06は準備中の記事です">スワップポイントとは？<small>（準備中）</small></span>」で解説しています。</p>
+<p>スワップポイントは、2つの通貨の金利差から生まれる調整額です。「受け取れるもの」というイメージを持たれがちですが、<strong>取引の方向や通貨ペアによっては支払いになります</strong>。また、金利の状況によって日々変わり、受け取りから支払いに変わることもあります。くわしくは「スワップポイントとは？」（近日公開）で解説しています。</p>
 <h3 id="sec-3">「証拠金以上の損失」が起きる仕組み</h3>
 <blockquote class="callout callout--warn"><p>⚠️ <strong>ここが一番知っておいてほしいリスクです</strong><br />
 金融庁は「相場が急激に変動したときは、ロスカットルールが適用されても、証拠金の額を上回る損失が生じることがあります」と注意を呼びかけています。</p>
@@ -240,9 +246,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li>口座残高：15万円－16万円＝<strong>－1万円</strong>（預けたお金をすべて失い、さらに1万円の不足）</li>
 </ul>
 </blockquote>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>急変時のロスカットのタイムライン。横軸を時間、縦軸を為替レートにして、①金曜日の終わりのレート、②週末のニュース、③週明けにレートが大きく下がって始まる（窓開け）、④本来のロスカット水準のラインを飛び越えて決済、⑤口座残高がマイナスになる、の流れを時系列で示す。数値は「例示」と明記</div>
-
-<p>このように口座残高がマイナスになった場合、<strong>不足分は業者に支払う（入金する）義務があります</strong>。ロスカットされたからといって不足分が帳消しになるわけではありません。「FXで借金を負うことがある」と言われるのは、このように損失が預けたお金を上回り、不足分の支払い義務が残ることがあるためです。入金の期限や手続きは業者ごとに定められているため、取引前に各社の契約締結前交付書面などで確認しておきましょう。ロスカットの仕組みは「<a href="article-a03.html">ロスカットとは？</a>」で、相場急変のリスクは「<span class="pending" title="D-04は準備中の記事です">相場急変・窓開け・スリッページのリスク<small>（準備中）</small></span>」でくわしく解説しています。</p>
+<p>このように口座残高がマイナスになった場合、<strong>不足分は業者に支払う（入金する）義務があります</strong>。ロスカットされたからといって不足分が帳消しになるわけではありません。「FXで借金を負うことがある」と言われるのは、このように損失が預けたお金を上回り、不足分の支払い義務が残ることがあるためです。入金の期限や手続きは業者ごとに定められているため、取引前に各社の契約締結前交付書面などで確認しておきましょう。ロスカットの仕組みは「<a href="article-a03.html">ロスカットとは？</a>」で、相場急変のリスクは「相場急変・窓開け・スリッページのリスク」（近日公開）でくわしく解説しています。</p>
 <h2 id="sec-4">レバレッジは損失も大きくする</h2>
 <p>FXでは、預けた証拠金の何倍もの金額を取引できます。これを「レバレッジ」といいます。日本の個人がFXを行う場合、レバレッジの上限は<strong>25倍</strong>です（取引額の4％以上の証拠金が必要）。</p>
 <p>レバレッジは「少ないお金で大きな利益をねらえる」と紹介されることがありますが、<strong>利益と同じ比率で損失も大きくなります</strong>。</p>
@@ -277,8 +281,6 @@ code{overflow-wrap:anywhere;word-break:break-word}
 </tbody>
 </table></div>
 </blockquote>
-<div class="figure-ph"><span class="figure-ph__label">図解（準備中）</span>レバレッジ有無の損益比較。同じ「3円の円高」という値動きに対して、レバレッジ1倍は口座資金の棒グラフが少しだけ減り、10倍は大きく減る様子を2本の棒で並べる。「数値は説明用の例示」と明記</div>
-
 <p>同じ3円の値動きでも、レバレッジ10倍では損失が10倍になります。上限の25倍に近いほど、わずかな値動きでロスカットの対象になりやすくなります。レバレッジと証拠金の関係は「<a href="article-a03.html">ロスカットとは？FXの証拠金・レバレッジの仕組み</a>」で計算例とともに解説しています。</p>
 <h2 id="sec-5">初心者が損失を大きくしやすい行動</h2>
 <p>FXで損失が大きくなるのは、相場だけが原因とは限りません。一般的に、次のような行動は損失を大きくしやすいといわれています。</p>
@@ -289,7 +291,7 @@ code{overflow-wrap:anywhere;word-break:break-word}
 <li><strong>レバレッジを上限近くまでかける</strong>：少しの値動きでロスカットされたり、損失が大きくなったりしやすい</li>
 <li><strong>生活に必要なお金を使う</strong>：「失えないお金」だと冷静な判断がしにくくなる</li>
 </ul>
-<p>これらを防ぐには、取引の前に「どこまでなら損をしてもよいか」と「どこで損切りするか」を決めておくことが大切です。具体的な考え方は「<span class="pending" title="C-01は準備中の記事です">FXの資金管理とFXのロット計算<small>（準備中）</small></span>」「<span class="pending" title="C-02は準備中の記事です">FXの損切りの目安は？<small>（準備中）</small></span>」で解説しています。</p>
+<p>これらを防ぐには、取引の前に「どこまでなら損をしてもよいか」と「どこで損切りするか」を決めておくことが大切です。具体的な考え方は「FXの資金管理とFXのロット計算」（近日公開）「FXの損切りの目安は？」（近日公開）で解説しています。</p>
 <h2 id="sec-6">無登録業者・「必ず儲かる」勧誘に注意</h2>
 <blockquote class="callout callout--warn"><p>⚠️ <strong>リスク注意</strong><br />
 FXに「必ず儲かる」「絶対に負けない」方法はありません。こうした言葉で取引や商材を勧めてくる相手には注意してください。</p>
@@ -307,13 +309,13 @@ FXに「必ず儲かる」「絶対に負けない」方法はありません。
 <li>金融事業者の一括検索機能を使えば、名称や電話番号からも調べられます</li>
 <li>金融庁（財務局）が無登録で金融商品取引業を行っているとして警告を出した業者の一覧もあわせて確認する</li>
 </ol>
-<p>また、登録を受けた業者であっても、その業者の信用力などを慎重に判断することが大切だと金融庁は説明しています。取引前の準備は「<span class="pending" title="A-07は準備中の記事です">FX初心者がまずやること：取引前の準備と金融庁登録業者の確認<small>（準備中）</small></span>」でまとめています。</p>
+<p>また、登録を受けた業者であっても、その業者の信用力などを慎重に判断することが大切だと金融庁は説明しています。取引前の準備は「FX初心者がまずやること：取引前の準備と金融庁登録業者の確認」（近日公開）でまとめています。</p>
 <h2 id="sec-7">それでも始めるなら：取引前の約束</h2>
 <p>ここまで読んで、「それでもFXをやってみたい」と考える方は、取引の前に次の3つを自分と約束しておきましょう。</p>
 <ol>
 <li><strong>生活資金を使わない</strong><br>家賃や生活費、近いうちに使う予定のお金は使わず、なくなっても生活に影響しない範囲にとどめましょう。</li>
-<li><strong>デモ取引から始める</strong><br>実際のお金を使わずに、注文・決済・損切りの操作を練習しましょう。→「<span class="pending" title="B-07は準備中の記事です">デモ取引の始め方と練習メニュー<small>（準備中）</small></span>」</li>
-<li><strong>損切りのルールを先に決める</strong><br>取引を始める前に、「どこまで下がったら（上がったら）決済するか」を決め、逆指値注文などで実際に設定しましょう。→「<span class="pending" title="C-02は準備中の記事です">FXの損切りの目安は？<small>（準備中）</small></span>」「<span class="pending" title="B-02は準備中の記事です">注文方法の基本：成行・指値・逆指値<small>（準備中）</small></span>」</li>
+<li><strong>デモ取引から始める</strong><br>実際のお金を使わずに、注文・決済・損切りの操作を練習しましょう。→「デモ取引の始め方と練習メニュー」（近日公開）</li>
+<li><strong>損切りのルールを先に決める</strong><br>取引を始める前に、「どこまで下がったら（上がったら）決済するか」を決め、逆指値注文などで実際に設定しましょう。→「FXの損切りの目安は？」（近日公開）「注文方法の基本：成行・指値・逆指値」（近日公開）</li>
 </ol>
 <h2 id="sec-8">まとめ：次に読む記事</h2>
 <ul>
@@ -330,22 +332,22 @@ FXに「必ず儲かる」「絶対に負けない」方法はありません。
 本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示です。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。</p>
 <p><strong>参考：</strong></p>
 <ul>
-<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年10月25日）</li>
-<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年10月25日）</li>
-<li>金融庁「<a href="https://www.fsa.go.jp/menkyo/menkyo.html" target="_blank" rel="noopener">免許・許可・登録等を受けている事業者一覧</a>」（参照日：2026年10月25日）</li>
-<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/customers/" target="_blank" rel="noopener">個人顧客を相手方とするFX取引に係る証拠金規制</a>」（参照日：2026年10月25日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年11月5日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank" rel="noopener">無登録の海外所在業者による勧誘にご注意ください</a>」（参照日：2026年11月5日）</li>
+<li>金融庁「<a href="https://www.fsa.go.jp/menkyo/menkyo.html" target="_blank" rel="noopener">免許・許可・登録等を受けている事業者一覧</a>」（参照日：2026年11月5日）</li>
+<li>金融先物取引業協会「<a href="https://www.ffaj.or.jp/regulation/customers/" target="_blank" rel="noopener">個人顧客を相手方とするFX取引に係る証拠金規制</a>」（参照日：2026年11月5日）</li>
 </ul>
   </div>
-  <nav class="pager" aria-label="入門の前後の記事"><span class="pager__link is-pending"><small>← 前の記事</small>A-01 FXとは？為替レートと円高・円安のしくみ（準備中）</span><a class="pager__link" href="article-a03.html"><small>次の記事 →</small>A-03 ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</a></nav>
+  <nav class="pager" aria-label="前後の記事"><a class="pager__link" href="article-a01.html"><small>← 前の記事</small>A-01 FXとは？為替レートと円高・円安のしくみ</a><a class="pager__link" href="article-a03.html"><small>次へ →</small>A-03 ロスカットとは？FXの証拠金・レバレッジの仕組みと「個人は最大25倍」の意味</a></nav>
 </article>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div><p class="footer-title">はじめてのFX学習ノート（仮称）</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログ（見本）。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">はじめてのFX学習ノート</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログです。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
     <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
     <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
   </div>
-  <p class="wrap footer-mock">見本（モック）・非公開｜作成日 2026年10月26日｜契約・ドメイン取得・公開はしていません</p>
+  <p class="wrap footer-copy">© 2026 はじめてのFX学習ノート　当サイトは一般的な情報提供を目的としており、投資助言ではありません。詳しくは<a href="disclaimer.html">免責事項</a>をご覧ください。</p>
 </footer>
 <script>
 /* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */

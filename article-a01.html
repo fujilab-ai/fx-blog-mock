@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FXとは？為替レートの見方と円高・円安のしくみを初心者向けに解説｜はじめてのFX学習ノート</title>
+<meta name="description" content="FXとは、2つの通貨を交換する際の値段（為替レート）の変動で損益が出る取引です。「1ドル＝150円」が「1ドル＝155円」になるとどういうことか、円から見た・ドルから見た円高・円安の意味と暮らしとのつながりを、説明用の例で解説します。">
+<style>
+:root{
+  --navy:#1f3a5f; --navy-2:#2c5282; --ink:#1f2933; --muted:#5f6b7a; --line:#dde3ea;
+  --bg:#f6f8fb; --card:#fff; --warn-bg:#fff7e6; --warn-line:#e0a100; --note-bg:#eef5ff; --note-line:#5b8def;
+  --step1:#2f855a; --step2:#2b6cb0; --step3:#b7791f; --step4:#6b46c1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px}
+a{color:var(--navy-2)} a:hover{color:var(--navy)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.small{font-size:.86rem;color:var(--muted)}
+.mock-banner{background:#3b3b3b;color:#fff;text-align:center;font-size:.8rem;padding:6px 12px;letter-spacing:.02em}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700}
+.logo__mark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--navy);color:#fff;font-size:.85rem}
+.logo__text{font-size:1.1rem}.logo__text small{font-weight:400;color:var(--muted);font-size:.75rem;margin-left:4px}
+.badge-mock{border:1px dashed #c53030;color:#c53030;font-size:.75rem;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.gnav ul{display:flex;gap:4px;list-style:none;margin:0 auto;padding-bottom:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gnav a{display:block;padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.9rem;white-space:nowrap}
+.gnav a:hover{background:var(--bg)} .gnav a[aria-current]{background:var(--navy);color:#fff}
+.main{padding-top:24px;padding-bottom:48px}
+.eyebrow{color:var(--navy-2);font-weight:700;font-size:.85rem;margin:0 0 4px;letter-spacing:.05em}
+.hero{background:linear-gradient(135deg,#1f3a5f,#2c5282);color:#fff;border-radius:14px;padding:36px 28px;margin-bottom:20px}
+.hero .eyebrow{color:#bcd3f2}.hero h1{font-size:1.75rem;line-height:1.45;margin:.2em 0 .5em}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;background:#fff;color:var(--navy);padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn:hover{opacity:.9;color:var(--navy)} .btn--ghost:hover{color:#fff}
+.section{margin:32px 0}.section--muted{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 24px 12px}
+.section__title{font-size:1.3rem;border-left:5px solid var(--navy);padding-left:10px}
+.road{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end}
+.road__step a{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink);height:100%}
+.road__step--1{--c:var(--step1)} .road__step--2{--c:var(--step2);margin-bottom:0}.road__step--3{--c:var(--step3)}.road__step--4{--c:var(--step4)}
+.road__step--1 a{min-height:200px}.road__step--2 a{min-height:225px}.road__step--3 a{min-height:250px}.road__step--4 a{min-height:275px}
+.road__num{color:var(--c);font-weight:700;font-size:.85rem}.road__name{font-size:1.3rem;font-weight:700}
+.road__goal{font-size:.85rem;color:var(--muted);flex:1}.road__count{font-size:.8rem;color:var(--c);font-weight:700}
+.road__step a:hover{box-shadow:0 4px 14px rgba(31,58,95,.12)}
+.post-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.post-card{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.post-card__id{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--muted);min-width:3.2em}
+.post-card__title{flex:1;min-width:12em;font-weight:700}
+.post-card.is-pending{background:#fafbfc}.post-card.is-pending .post-card__title{color:var(--muted);font-weight:400}
+.tag{font-size:.72rem;border:1px solid var(--line);color:var(--muted);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag--draft{border-color:var(--step2);color:var(--step2)}.tag--missing{border-color:#c53030;color:#c53030}
+.crumbs ol{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin:0 8px}
+.steps{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:20px}
+.steps__now{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
+.steps ol{list-style:none;margin:0;padding:10px 6px 2px 0;display:flex;gap:6px;overflow-x:auto}
+.steps__item a{display:block;padding:6px 12px;border-radius:6px;background:var(--bg);text-decoration:none;color:var(--muted);font-size:.85rem;white-space:nowrap;position:relative}
+.steps__item.is-current a{background:var(--navy);color:#fff;font-weight:700}
+.steps__item.is-current a::after{content:"いまここ";position:absolute;top:-9px;right:-4px;background:#c53030;color:#fff;font-size:.6rem;padding:0 5px;border-radius:4px}
+.article{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 32px}
+.article__head h1{font-size:1.6rem;line-height:1.5;margin:.3em 0}
+.article__meta{display:flex;gap:8px;align-items:center;margin:0}.article__id{font-family:ui-monospace,monospace;color:var(--muted);font-size:.85rem}
+.progress{display:inline-block;background:var(--bg);border-radius:6px;padding:2px 10px;font-size:.85rem;margin:0}
+.toc{background:var(--bg);border-radius:10px;padding:12px 20px;margin:20px 0}
+.toc__title{font-weight:700;margin:0}.toc ol{margin:6px 0 0;padding-left:1.4em}
+.prose h2{font-size:1.35rem;border-bottom:2px solid var(--navy);padding-bottom:6px;margin-top:2.2em;scroll-margin-top:110px}
+.prose h3{font-size:1.12rem;border-left:4px solid var(--navy-2);padding-left:10px;margin-top:1.8em}
+.prose li{margin:.3em 0}
+.callout{margin:1.2em 0;padding:12px 18px;border-radius:10px;border-left:5px solid}
+.callout p{margin:.4em 0}.callout ul{margin:.3em 0;padding-left:1.3em}
+.callout--warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.callout--note{background:var(--note-bg);border-color:var(--note-line);font-size:.95rem}
+.table-wrap{overflow-x:auto;margin:1em 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.figure-ph{border:2px dashed #b8c4d3;border-radius:10px;padding:14px 18px;margin:1.2em 0;color:var(--muted);font-size:.88rem;background:#fbfcfe}
+.figure-ph__label{display:block;font-weight:700;color:var(--navy-2);margin-bottom:4px}
+.pending{color:var(--muted);border-bottom:1px dotted var(--muted)}.pending small{font-size:.75em}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.pager__link{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;font-size:.9rem}
+.pager__link small{display:block;color:var(--muted)}.pager__link.is-pending{color:var(--muted);background:#fafbfc}
+.pager__link:last-child{text-align:right}
+.cat-head{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:16px}
+.cat-head h1{margin:0 0 6px}.goal{margin:0 0 6px}
+.notice{background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 14px;font-size:.9rem}
+.back{margin-top:20px}
+.promise{padding-left:1.2em}
+.form{display:grid;gap:12px;max-width:520px}.form label{display:grid;gap:4px;font-size:.9rem}
+.form input,.form textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:#f3f4f6}
+.form button{justify-self:start;padding:8px 18px;border-radius:6px;border:0;background:#cbd5e0;color:#4a5568}
+.site-footer{background:#1a2b44;color:#cfd8e3;padding:32px 0 16px;font-size:.9rem}
+.site-footer a{color:#e2e8f0;text-decoration:none}.site-footer a:hover{text-decoration:underline}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.footer-grid ul{list-style:none;padding:0;margin:0}.footer-title{font-weight:700;color:#fff;margin:0 0 6px}
+.site-footer .small{color:#a0aec0}
+.footer-mock{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#ff9d9d}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .road{grid-template-columns:1fr 1fr}.road__step a{min-height:0 !important}
+  .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
+  .article{padding:20px 16px;border-radius:10px}.article__head h1{font-size:1.3rem}
+  .footer-grid{grid-template-columns:1fr}
+  .pager{grid-template-columns:1fr}.pager__link:last-child{text-align:left}
+  .badge-mock{display:none}
+}
+@media (max-width:420px){.road{grid-template-columns:1fr}}
+
+/* ===== モバイル対応（レスポンシブ）追加分 ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{max-width:100%;overflow-x:hidden}
+body{line-height:1.75;overflow-wrap:break-word;word-break:normal}
+img,svg,video,iframe,canvas{max-width:100%;height:auto}
+pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-break:break-word;background:#f3f6fa;border-radius:8px;padding:12px 14px;font-size:.88rem}
+code{overflow-wrap:anywhere;word-break:break-word}
+.prose a,.prose td,.prose p,.prose li,.callout,.figure-ph{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.main,.article,.prose{min-width:0}
+/* ハンバーガーボタン（PCでは非表示） */
+.nav-toggle{display:none;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.nav-toggle:focus-visible,.gnav a:focus-visible,.btn:focus-visible{outline:3px solid var(--note-line);outline-offset:2px}
+.nav-toggle__bar,.nav-toggle__bar::before,.nav-toggle__bar::after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.nav-toggle__bar::before,.nav-toggle__bar::after{content:"";position:absolute;left:0}
+.nav-toggle__bar::before{top:-6px}.nav-toggle__bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.75}
+  .wrap{padding:0 14px}
+  .main{padding-top:14px;padding-bottom:32px}
+  .mock-banner{font-size:.72rem;padding:4px 10px}
+  .site-header__inner{padding-top:8px;padding-bottom:8px}
+  .logo{min-width:0}.logo__text{font-size:1rem;line-height:1.35}.logo__text small{display:none}
+  .logo__mark{width:32px;height:32px;flex-shrink:0}
+  /* JSが動くときだけ折りたたむ（JS無効でもメニューは見える） */
+  .js .nav-toggle{display:inline-flex}
+  .js .gnav{display:none;border-top:1px solid var(--line);background:#fff;box-shadow:0 8px 16px rgba(31,58,95,.10)}
+  .js .gnav.is-open{display:block;max-height:calc(100vh - 90px);overflow-y:auto}
+  .js .gnav ul{flex-direction:column;gap:2px;padding:8px 14px 12px;overflow:visible}
+  .js .gnav a{display:flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:8px;font-size:1rem}
+  .gnav a{min-height:44px;display:flex;align-items:center}
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px}
+  .hero__cta .btn{flex:1 1 100%}
+  .hero{padding:22px 16px;border-radius:12px}.hero h1{font-size:1.35rem}.hero br{display:none}
+  .section{margin:24px 0}.section--muted{padding:4px 16px 10px}
+  .section__title{font-size:1.15rem}
+  .article{padding:18px 14px;border-radius:10px}.article__head h1{font-size:1.3rem;line-height:1.5}
+  .article__meta{flex-wrap:wrap}
+  .prose h2{font-size:1.2rem;scroll-margin-top:80px}.prose h3{font-size:1.05rem}
+  .prose ul,.prose ol,.toc ol{padding-left:1.3em}
+  .toc{padding:10px 14px}.toc a{display:inline-block;padding:4px 0}
+  .callout{padding:10px 12px}
+  .figure-ph{padding:12px}
+  table{font-size:.85rem}th,td{padding:6px 8px}
+  .cat-head{padding:16px}
+  .cat-head h1{font-size:1.4rem}
+  .post-card{padding:12px}.post-card__title{min-width:0;flex-basis:100%}
+  .steps ol{padding-top:12px}
+  .steps__item a{min-height:40px;display:flex;align-items:center}
+  .crumbs ol{font-size:.8rem}
+  .pager__link{min-height:44px}
+  .site-footer a{display:inline-block;padding:6px 0}
+  .form{max-width:100%}.form input,.form textarea{font-size:16px;width:100%}
+  .form button{min-height:44px}
+}
+
+/* ===== 公開用コピーで追加 ===== */
+/* 図の差し替え枠（FIGURE_MODE="frame" のときだけ表示。"hidden" では非表示） */
+.figure-slot{border:1px solid var(--line);border-radius:10px;min-height:120px;margin:1.2em 0;background:#fbfcfe;display:flex;align-items:center;justify-content:center}
+.figure-slot[hidden]{display:none}
+.figure-slot__label{color:var(--muted);font-size:.8rem}
+.tag--soon{border-color:var(--line);color:var(--muted)}
+.tag--pub{border-color:var(--step2);color:var(--step2)}
+.draft-note{background:#fffbea;border:1px solid #f6e05e;border-radius:8px;padding:10px 14px;font-size:.88rem;margin:0 0 1.2em}
+.footer-copy{margin-top:20px;border-top:1px solid #2d4466;padding-top:12px;font-size:.78rem;color:#c3cfdf}
+.contact-mail{font-size:1.05rem;font-weight:700}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true">FX</span><span class="logo__text">はじめてのFX学習ノート<small></small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く"><span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__text">メニュー</span></button>
+  </div>
+  <nav class="gnav" id="gnav" aria-label="メインメニュー"><ul class="wrap"><li><a href="index.html">トップ</a></li><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">入門</a></li><li><a href="category-kiso.html">基礎</a></li><li><a href="category-jissen.html">実践</a></li><li><a href="category-oyo.html">応用</a></li></ul></nav>
+</header>
+<main class="wrap main">
+<nav class="crumbs" aria-label="パンくずリスト"><ol><li><a href="index.html">トップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li aria-current="page">FXとは？為替レートと円高・円安のしくみ</li></ol></nav>
+<nav class="steps" aria-label="いま学んでいるステップ"><p class="steps__now">いま学んでいるステップ</p><ol><li class="steps__item"><a href="roadmap.html">ロードマップ</a></li><li class="steps__item is-current"><a href="category-nyumon.html">STEP1 入門</a></li><li class="steps__item"><a href="category-kiso.html">STEP2 基礎</a></li><li class="steps__item"><a href="category-jissen.html">STEP3 実践</a></li><li class="steps__item"><a href="category-oyo.html">STEP4 応用</a></li></ol></nav>
+<article class="article">
+  <header class="article__head">
+    <p class="article__meta"><span class="article__id">A-01</span></p>
+    <h1>FXとは？為替レートと円高・円安のしくみ</h1>
+    <p class="progress">STEP1 入門：全8本中 2本目</p>
+    <p class="article__lead small">公開日：2026年11月5日</p>
+  </header>
+  <aside class="toc"><p class="toc__title">この記事の目次</p><ol><li><a href="#sec-1">FXとは？一言でいうと「通貨を交換する値段の動きで損益が出る取引」</a></li><li><a href="#sec-4">為替レートの読み方：「1ドル＝150円」は何を表している？</a></li><li><a href="#sec-8">円高・円安とは？「1ドル＝150円→155円」で考える</a></li><li><a href="#sec-12">円高・円安は暮らしとどうつながる？</a></li><li><a href="#sec-15">「レートが動く」ことがFXの損益の元になる</a></li><li><a href="#sec-16">まとめ：次に読む記事</a></li></ol></aside>
+  <div class="prose">
+<p>「FXって、そもそも何？」「ニュースでよく聞く『円安』って、どういう意味？」そんな疑問を持っている方に向けた記事です。</p>
+<p>結論からお伝えすると、<strong>FXは、為替レート（通貨を交換するときの値段）の変動によって損益が出る取引です。だからこそ、まずは為替レートと円高・円安の意味を知ることが出発点になります</strong>。</p>
+<p>この記事で分かること：</p>
+<ol>
+<li>FXとは何か</li>
+<li>為替レートの読み方</li>
+<li>円高・円安で何が起きるか</li>
+</ol>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスクについて</strong><br />
+FXは元本保証のない取引です。為替レートが予想と逆に動けば損失が出て、相場の急変時などには、預けたお金（証拠金）を上回る損失が出ることもあります。くわしくは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」で解説しています。</p>
+</blockquote>
+<h2 id="sec-1">FXとは？一言でいうと「通貨を交換する値段の動きで損益が出る取引」</h2>
+<h3 id="sec-2">FXは「外国為替証拠金取引」</h3>
+<p>FXの正式名称は「外国為替証拠金取引」です。少し長いので、分けて見てみましょう。</p>
+<ul>
+<li><strong>外国為替</strong>：円とドルのように、異なる通貨を交換すること</li>
+<li><strong>証拠金</strong>：取引の担保として業者に預けるお金（くわしくは「<a href="article-a03.html">ロスカットとは？FXの証拠金・レバレッジの仕組み</a>」で解説しています）</li>
+</ul>
+<p>一言でまとめると、FXは「証拠金を預けて通貨を交換する取引を行い、為替レートの変動によって損益が出る取引」です。</p>
+<p>金融庁は、FX取引について「少額の資金で取引が始められ、投資金額に比べて大きな額の取引を行うことができる」一方で、「証拠金以上の損失が生じるおそれがあり、元本も利益も保証されない取引」と説明しています。</p>
+<p>なお、預けたお金より大きな金額を取引できる仕組みを「レバレッジ」といい、そのぶん損益も大きくなります（くわしくは「<a href="article-a03.html">ロスカットとは？</a>」で解説しています）。</p>
+<h3 id="sec-3">海外旅行の両替との違い</h3>
+<p>海外旅行の前に円をドルに替える「両替」は、通貨を交換して<strong>使う</strong>ためのものです。一方FXは、通貨の交換の値段（為替レート）の<strong>変動</strong>によって損益が出る取引です。目的は違いますが、どちらも「為替レート」という同じ考え方が土台になっています。</p>
+<h2 id="sec-4">為替レートの読み方：「1ドル＝150円」は何を表している？</h2>
+<h3 id="sec-5">為替レートは「通貨と通貨の交換比率」</h3>
+<p>為替レートとは、ある通貨を別の通貨と交換するときの比率、つまり「通貨の値段」のことです。</p>
+<p>「1ドル＝150円」は、「1ドルを手に入れるのに150円が必要」、言いかえると「1ドルは150円と交換できる」という意味です。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場ではありません）  </p>
+<ul>
+<li>1ドル＝150円なら、100ドルは 150円×100＝<strong>15,000円</strong></li>
+<li>1ドル＝150円なら、1万円は 1万÷150＝<strong>約66.7ドル</strong></li>
+</ul>
+</blockquote>
+<h3 id="sec-6">為替レートは常に動いている</h3>
+<p>為替レートは、誰かが一方的に決めた固定の値段ではありません。日本銀行は、為替レートは「市場における需要と供給のバランスによって決まる」と説明しています。通貨を「欲しい人」と「手放したい人」のバランスが変わるたびに、レートも動きます。</p>
+<p>バランスが変わる理由には、金利や景気、さまざまなニュースなど多くの要因があります。この記事では「需要と供給で動くもの」と押さえておけば十分です。</p>
+<h3 id="sec-7">ニュースのレートと両替のレートは違うことがある</h3>
+<p>ニュースで報じられる「1ドル＝○○円」は、通常、金融機関どうしの取引（インターバンク取引）のレートです。個人が銀行で両替するときのレートは、いわば「小売り」の値段で、ニュースの値とは異なります。</p>
+<p>また、FX業者の取引画面では、「買うときの値段」と「売るときの値段」の2つが並んで表示されます。この差を「FXのスプレッド」といい、くわしくは「FXの1pipsとは？値動きの数え方とFXのスプレッドの基本」（近日公開）で解説します。</p>
+<h2 id="sec-8">円高・円安とは？「1ドル＝150円→155円」で考える</h2>
+<p>ここからが、この記事のいちばん大事なところです。</p>
+<h3 id="sec-9">1ドル＝150円が155円になると「円安」</h3>
+<p>「1ドル＝150円」が「1ドル＝155円」になったとします。これは、<strong>同じ1ドルを手に入れるのに、5円多く払う必要がある</strong>ということです。</p>
+<p>つまり、円の価値が下がった状態で、これを<strong>円安</strong>といいます。同時に、ドルの価値は上がっているので<strong>ドル高</strong>でもあります。</p>
+<p>「数字が大きくなったのに『安』なの？」と混乱しやすいポイントですが、「円安」は<strong>円の</strong>値段が安くなることを指します。150円→155円と上がっているのは、<strong>ドルの</strong>値段（1ドルが何円か）のほうです。</p>
+<h3 id="sec-10">円から見る・ドルから見る</h3>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場ではありません）  </p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>1ドル＝150円（基準）</th>
+<th>1ドル＝155円</th>
+<th>1ドル＝145円</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>呼び方</td>
+<td>―</td>
+<td><strong>円安・ドル高</strong></td>
+<td><strong>円高・ドル安</strong></td>
+</tr>
+<tr>
+<td>円から見ると：1万円で手に入るドル</td>
+<td>約66.7ドル</td>
+<td>約64.5ドル（減る）</td>
+<td>約69.0ドル（増える）</td>
+</tr>
+<tr>
+<td>ドルから見ると：100ドルを円にすると</td>
+<td>15,000円</td>
+<td>15,500円（増える）</td>
+<td>14,500円（減る）</td>
+</tr>
+</tbody>
+</table></div>
+<p>覚え方はシンプルです。</p>
+<ul>
+<li><strong>円高</strong>＝円の力が強くなり、同じ円でより多くの外貨と交換できる</li>
+<li><strong>円安</strong>＝円の力が弱くなり、同じ円で交換できる外貨が少なくなる</li>
+</ul>
+<p>日本銀行も、円高を「円1単位で交換できる他通貨の単位数が相対的に多い状態」、円安を「少ない状態」と説明しています。</p>
+<p>また、「円高・ドル安」「円安・ドル高」はいつもセットです。片方の通貨から見て値段が上がれば、もう片方から見ると下がっている、という関係になります。</p>
+<h3 id="sec-11">「○円の円安」というニュースの読み方</h3>
+<p>ニュースで「前日より2円の円安」と聞いたら、「1ドルの値段（円での値段）が前日より2円上がった」、つまり「1ドルを手に入れるのに、前日より2円多く必要になった」という意味です。</p>
+<p>ほかにも「円安が進む」「円高に振れる」といった言い回しがよく使われます。どちらも、レートが円安・円高の方向に動いたことを表す言葉です。</p>
+<h2 id="sec-12">円高・円安は暮らしとどうつながる？</h2>
+<p>円高・円安は、FXをしない人の暮らしにも関わっています。ただし、どちらが良い・悪いと一概には言えず、<strong>立場によって影響が違う</strong>のがポイントです。</p>
+<h3 id="sec-13">海外旅行・海外通販</h3>
+<p>先ほどの例で考えてみましょう（数字は説明用の例で、実際の相場ではありません）。</p>
+<ul>
+<li><strong>円安（1ドル＝150円→155円）のとき</strong>：同じ1万円で両替できるドルが約66.7ドル→約64.5ドルに減ります。100ドルの品物を円で払うと、15,000円→15,500円になります。</li>
+<li><strong>円高（1ドル＝150円→145円）のとき</strong>：その逆で、1万円で約69.0ドルと交換でき、100ドルの品物は14,500円になります。</li>
+</ul>
+<h3 id="sec-14">輸入品・輸出する会社</h3>
+<p>原材料やエネルギー、食料など海外から買うもの（輸入品）は、一般に、円安だと円での仕入れ値が上がりやすく、円高だと下がりやすい傾向があります。</p>
+<p>一方、海外に製品を売る会社にとっては、円安のとき、同じ金額のドルを受け取っても、円に換えた金額が増えることになります（円高のときはその逆です）。</p>
+<p>このように、円高・円安は、立場によって助かる人もいれば困る人もいるものです。</p>
+<h2 id="sec-15">「レートが動く」ことがFXの損益の元になる</h2>
+<p>ここまでの例に戻ってみましょう。</p>
+<blockquote class="callout callout--note"><p>📝 <strong>説明用の例示</strong>（数字はすべて説明用の仮のもので、実際の相場ではありません）<br />
+100ドルを持っている人にとって、</p>
+<ul>
+<li>1ドル＝150円→155円になると、円に換えた価値は 15,000円→15,500円（<strong>＋500円</strong>）</li>
+<li>1ドル＝150円→145円になると、円に換えた価値は 15,000円→14,500円（<strong>−500円</strong>）</li>
+</ul>
+</blockquote>
+<p>このように、<strong>為替レートが動くと、持っている通貨の円での価値が増えたり減ったりします</strong>。FXは、この「為替レートの動き」によって損益が出る取引です。レートが予想と逆に動けば、損失になります。</p>
+<p>さらにFXでは、レバレッジによって預けたお金より大きな金額を取引するため、<strong>同じ値動きでも損益が大きくなり、相場の急変時などには預けたお金を上回る損失が出ることもあります</strong>。くわしくは「<a href="article-a02.html">始める前に知るFXの損失リスク</a>」と「<a href="article-a03.html">ロスカットとは？</a>」で解説しています。</p>
+<p>なお、FXには「上がると予想する取引」と「下がると予想する取引」の両方がありますが、どちらにしても予想が当たる保証はありません。くわしくは「通貨ペアと『買い』『売り』：どちらからでも取引できる理由」（近日公開）で解説します。</p>
+<blockquote class="callout callout--warn"><p>⚠️ <strong>リスク注意</strong><br />
+為替レートの動きを正確に予想し続けることはできません。FXは元本も利益も保証されない取引で、予想と逆に動けば損失が出ます。どんなときに、どれくらい損をする可能性があるのかを、取引を考える前に必ず確認してください。</p>
+</blockquote>
+<h2 id="sec-16">まとめ：次に読む記事</h2>
+<ul>
+<li>FXは「外国為替証拠金取引」。為替レートの変動によって損益が出る、<strong>元本も利益も保証されない取引</strong>です</li>
+<li>為替レートは通貨と通貨の交換比率で、<strong>需要と供給によって常に動いています</strong></li>
+<li>「1ドル＝150円→155円」は<strong>円安・ドル高</strong>、「150円→145円」は<strong>円高・ドル安</strong>です</li>
+<li>円高・円安の影響は<strong>立場によって違い</strong>、旅行・通販・輸入品など暮らしにもつながっています</li>
+<li>レートの動きはFXの損益の元です。相場の急変時などには<strong>預けたお金を上回る損失</strong>が出ることもあります</li>
+</ul>
+<p>次は、FXでは「どうやって損をするのか」、最悪の場合どうなるのかを、取引を考える前に知っておきましょう。</p>
+<p>👉 <strong>次に読む記事：<a href="article-a02.html">始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></strong></p>
+<p>👈 <strong>前の記事：<a href="roadmap.html">FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</a></strong>
+学ぶ順番に迷ったら、ロードマップに戻って全体を確認できます。</p>
+<hr />
+<p><strong>【免責事項】</strong>
+本記事はFXの仕組みについての一般的な情報提供を目的としており、特定の金融商品の売買や特定業者の利用を勧誘・推奨するものではありません。FXは元本や利益が保証された取引ではなく、為替相場の変動などにより損失が生じ、相場の急変時などには預け入れた証拠金を上回る損失が発生する可能性があります。記事内の為替レートや計算例は説明用の例示であり、実際の相場ではありません。必要証拠金、ロスカット水準、FXのスプレッド、スワップポイントなどの取引条件は業者により異なるため、取引の前に各社の契約締結前交付書面などをよくお読みいただき、ご自身の判断と責任で行ってください。</p>
+<p><strong>参考：</strong></p>
+<ul>
+<li>金融庁「<a href="https://www.fsa.go.jp/ordinary/iwagai/index.html" target="_blank" rel="noopener">いわゆる外国為替証拠金取引について</a>」（参照日：2026年11月5日）</li>
+<li>日本銀行「<a href="https://www.boj.or.jp/about/education/oshiete/intl/g17.htm" target="_blank" rel="noopener">為替相場（為替レート）とは何ですか？</a>」（教えて！にちぎん。参照日：2026年11月5日）</li>
+<li>日本銀行「<a href="https://www.boj.or.jp/about/education/oshiete/intl/g18.htm" target="_blank" rel="noopener">円高、円安とは何ですか？</a>」（教えて！にちぎん。参照日：2026年11月5日）</li>
+</ul>
+  </div>
+  <nav class="pager" aria-label="前後の記事"><a class="pager__link" href="roadmap.html"><small>← 前の記事</small>A-00 FXの勉強は何から始める？初心者向け4ステップ学習ロードマップ</a><a class="pager__link" href="article-a02.html"><small>次へ →</small>A-02 始める前に知るFXの損失リスク：元本割れと「証拠金以上の損失」</a></nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div><p class="footer-title">はじめてのFX学習ノート</p><p class="small">FX初心者が「リスクを知る→仕組み→練習→実践」の順に学ぶための学習ブログです。特定の金融商品や業者を勧誘・推奨するものではありません。</p></div>
+    <div><p class="footer-title">カリキュラム</p><ul><li><a href="roadmap.html">学習ロードマップ</a></li><li><a href="category-nyumon.html">STEP1 入門</a></li><li><a href="category-kiso.html">STEP2 基礎</a></li><li><a href="category-jissen.html">STEP3 実践</a></li><li><a href="category-oyo.html">STEP4 応用</a></li></ul></div>
+    <div><p class="footer-title">サイトについて</p><ul><li><a href="disclaimer.html">免責事項</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="about.html">運営者情報</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="ad-policy.html">広告・PRポリシー</a></li></ul></div>
+  </div>
+  <p class="wrap footer-copy">© 2026 はじめてのFX学習ノート　当サイトは一般的な情報提供を目的としており、投資助言ではありません。詳しくは<a href="disclaimer.html">免責事項</a>をご覧ください。</p>
+</footer>
+<script>
+/* スマホ用メニュー（ハンバーガー）の開閉。フレームワーク不使用。 */
+(function () {
+  var html = document.documentElement;
+  html.classList.add('js');
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('gnav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    nav.classList.toggle('is-open', open);
+  }
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false); btn.focus();
+    }
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  var mq = window.matchMedia('(min-width: 761px)');
+  var onChange = function () { if (mq.matches) setOpen(false); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+})();
+</script>
+</body>
+</html>
